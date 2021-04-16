@@ -202,11 +202,11 @@
 						<a @if(\Request::segment(1) == 'user') class="active" @endif href="{{url('user')}}"><div class="pull-left"><i class="fa fa-user  mr-20"></i><span class="right-nav-text">Pengguna </span></div><div class="clearfix"></div></a>
 					</li>
 				@endif
-				{{-- @if(access_is_allowed_to_view('read.setting'))<li>
+				@if(access_is_allowed_to_view('read.setting'))<li>
 				<li>
 					<a @if(\Request::segment(1) == 'setting') class="active" @endif href="{{url('setting')}}"><div class="pull-left"><i class="fa fa-cog  mr-20"></i><span class="right-nav-text">Pengaturan </span></div><div class="clearfix"></div></a>
 				</li>
-				@endif --}}
+				@endif
 			@endrole
 				<li><hr class="light-grey-hr mb-10"/></li>
 				<li class="navigation-header">

@@ -25,25 +25,25 @@ class SettingSeeder extends Seeder
         $this->output->writeln('<info>--- Settings Seeder Started ---</info>');
         $data = array(
             0 => [
-                'name' => 'Approval ke Sr. Spv. RSD',
-                'description' => 'Pengaturan approval ke pegawai yang mempunyai jabatan Sr. Spv. RSD',
-                'key' => 'spv_rsd',
-                'value' => 2,
-                'input_type' => 'user',
+                'name' => 'Logo Login',
+                'description' => 'Logo dihalaman login',
+                'key' => 'logo_login',
+                'value' => 'dist/img/pertamina.png',
+                'input_type' => 'file',
             ],
             1 => [
-                'name' => 'Approval ke OH ',
-                'description' => 'Pengaturan approval ke pegawai yang mempunyai jabatan OH',
-                'key' => 'spv_oh',
-                'value' => 3,
-                'input_type' => 'user',
+                'name' => 'Background Login ',
+                'description' => 'Background gambar di halaman login',
+                'key' => 'background_login',
+                'value' => 'dist/img/bg-tbbm-wangi.jpeg',
+                'input_type' => 'file',
             ],
             2 => [
-                'name' => 'Approval ke Spv. EPM ',
-                'description' => 'Pengaturan approval ke pegawai yang mempunyai jabatan Spv. EPM',
-                'key' => 'spv_epm',
-                'value' => 4,
-                'input_type' => 'user',
+                'name' => 'Favicon',
+                'description' => 'Favicon',
+                'key' => 'favicon',
+                'value' => 'favicon.ico',
+                'input_type' => 'file',
             ]
         );
 

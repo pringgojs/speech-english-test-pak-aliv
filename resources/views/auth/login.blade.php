@@ -9,7 +9,7 @@
 		<meta name="author" content="Pringgo Juni Saputro | odyinggo@gmail.com"/>
 		
 		<!-- Favicon -->
-		<link rel="shortcut icon" href="favicon.ico">
+		<link rel="shortcut icon" href="{{asset(setting('favicon'))}}">
 		<link rel="icon" href="favicon.ico" type="image/x-icon">
 		<link rel="stylesheet" type="text/css" media="screen" href="{{asset('css/app.css')}}" />
 		<link rel="stylesheet" type="text/css" media="screen" href="{{asset('css/all.css')}}" />
@@ -30,7 +30,7 @@
 			<header class="sp-header">
 				<div class="sp-logo-wrap pull-left">
 					<a href="#">
-						<img class="brand-img mr-10" style="height:50px; width: auto" src="{{asset('dist/img/pertamina.png')}}" alt="brand"/>
+						<img class="brand-img mr-10" style="height:50px; width: auto" src="{{asset(setting('logo_login'))}}" alt="bran)d"/>
 						<span class="brand-text"></span>
 					</a>
 				</div>
@@ -39,7 +39,7 @@
 			</header>
 			
 			<!-- Main Content -->
-			<div class="page-wrapper pa-0 ma-0 auth-page" style="background-image: url('{{asset('dist/img/bg-tbbm-wangi.jpeg')}}') !important;background-repeat: no-repeat;
+			<div class="page-wrapper pa-0 ma-0 auth-page" style="background-image: url('{{asset(setting('background_login'))}}') !important;background-repeat: no-rep)eat;
   background-size: 100%;">
 				<div class="container-fluid">
 					<!-- Row -->

@@ -4,14 +4,14 @@
     <meta charset="UTF-8" />
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
 	<meta name="csrf-token" content="{{ csrf_token() }}">
-	<title>SIPANDU​</title>
+	<title>{{env('APP_NAME')}}</title>
 	<meta name="description" content="Selamat datang di Website resmi TBBM TANJUNG WANGI GROUP" />
 	<meta name="keywords" content="TBBM TANJUNG WANGI GROUP" />
 	<meta name="author" content="Pringgo Juni Saputro | odyinggo@gmail.com" />
 	
 	<!-- Favicon -->
-	<link rel="shortcut icon" href="favicon.ico">
-	<link rel="icon" href="{{asset('favicon.ico')}}" type="image/x-icon">
+	<link rel="shortcut icon" href="{{setting('favicon')}}">
+	<link rel="icon" href="{{setting('favicon')}}" type="image/x-icon">
     
     {{-- Css --}}
     <link rel="stylesheet" type="text/css" media="screen" href="{{asset('css/app.css')}}" />
@@ -46,7 +46,7 @@
 			<footer class="footer container-fluid pl-30 pr-30">
 				<div class="row">
 					<div class="col-sm-12">
-						<p>{{date('Y')}} &copy; Pertamina - developed by <a href="https://gramediatech.com">gramediatech.com</a></p>
+						<p>{{date('Y')}} &copy; {{env('APP_NAME')}} - developed by <a href="https://gramediatech.com">gramediatech.com</a></p>
 					</div>
 				</div>
 			</footer>
