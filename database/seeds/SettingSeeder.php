@@ -44,7 +44,14 @@ class SettingSeeder extends Seeder
                 'key' => 'favicon',
                 'value' => 'favicon.ico',
                 'input_type' => 'file',
-            ]
+            ],
+            3 => [
+                'name' => 'Logo Sidebar App',
+                'description' => 'Logo sidebar halaman admin',
+                'key' => 'logo_sidebar',
+                'value' => 'dist/img/pertamina.png',
+                'input_type' => 'file',
+            ],
         );
 
         DB::beginTransaction();
