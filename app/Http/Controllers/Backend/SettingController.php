@@ -2,9 +2,10 @@
 
 namespace App\Http\Controllers\Backend;
 
+use App\User;
 use Carbon\Carbon;
 use App\Models\Setting;
-use App\User;
+use App\Helpers\FileHelper;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
@@ -36,6 +37,11 @@ class SettingController extends Controller
             $date = Carbon::createFromFormat('Y-m-d g:i A', $date);
             $value = $date->format('H:i');
         }
+
+        if ($setting->input_type == 'file') {
+            $value = FileHelper::upload($request->value, 'uploads/config/');
+        }
+        
         $setting->value = $value;
         $setting->save();
         DB::commit();

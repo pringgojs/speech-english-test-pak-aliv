@@ -24,7 +24,7 @@
                 <div class="panel-wrapper collapse in">
                     <div class="panel-body">
                         <div class="form-wrap">
-                            <form method="post" action="{{url('setting/'.$setting->id)}}">
+                            <form method="post" action="{{url('setting/'.$setting->id)}}" enctype="multipart/form-data">
                                 {!! csrf_field() !!}
                                 <input name="_method" type="hidden" value="PUT">
                                 <div class="form-group">
@@ -45,6 +45,11 @@
                                     </div>
                                     @endif
 
+                                    @if ($setting->input_type == 'file' || $setting->input_type == 'text')
+                                    <div class="form-group">
+                                        <input type="{{$setting->input_type}}" class="form-control" value="{{$setting->value}}" name="value" required>
+                                    </div>
+                                    @endif
                                     @if ($setting->input_type == 'user')
                                     <div class="form-group">
                                         <select class="form-control" id="select" name="value">
