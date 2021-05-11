@@ -10,7 +10,7 @@
 		
 		<!-- Favicon -->
 		<link rel="shortcut icon" href="{{asset(setting('favicon'))}}">
-		<link rel="icon" href="favicon.ico" type="image/x-icon">
+		<link rel="icon" href="{{asset(setting('favicon'))}}" type="image/x-icon">
 		<link rel="stylesheet" type="text/css" media="screen" href="{{asset('css/app.css')}}" />
 		<link rel="stylesheet" type="text/css" media="screen" href="{{asset('css/all.css')}}" />
 		<style>
