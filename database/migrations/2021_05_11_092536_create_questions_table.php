@@ -18,7 +18,7 @@ class CreateQuestionsTable extends Migration
             $table->text('question')->nullable();
             $table->integer('topic_id')->unsigned()->index();
             $table->foreign('topic_id')->references('id')->on('topics')->onDelete('cascade');
-            $table->integer('sort')->unsigned();
+            $table->integer('serial_number')->unsigned();
             $table->softDeletes();
             $table->timestamps();
         });

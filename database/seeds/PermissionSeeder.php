@@ -46,6 +46,8 @@ class PermissionSeeder extends Seeder
 
         $group = 'MASTER';
         PermissionHelper::create('MASTER KATEGORI', ['create', 'read', 'update', 'delete'], $group);
+        PermissionHelper::create('MASTER TOPIC', ['create', 'read', 'update', 'delete'], $group);
+        PermissionHelper::create('MASTER QUESTION', ['create', 'read', 'update', 'delete'], $group);
         $this->output->writeln('<info>updated master permission</info>');
         
     }

@@ -5,44 +5,7 @@
 					<span>Main</span> 
 					<i class="zmdi zmdi-more"></i>
 				</li>
-				@role('guest')
-				<?php $type = \Input::get('type') ? :'bunkerfee';?>
-				<li>
-					<a @if(\Request::segment(2) == 'bunker-fee' && $type == 'bunkerfee') class="active" @endif href="javascript:void(0);" data-toggle="collapse" data-target="#menu-bunker-fee"><div class="pull-left"><i class="fa fa-money mr-20"></i><span class="right-nav-text">Bunker Fee</span></div><div class="pull-right"><i class="zmdi zmdi-caret-down"></i></div><div class="clearfix"></div></a>
-					<ul id="menu-bunker-fee" class="collapse @if(\Request::segment(2) == 'bunker-fee'  && $type == 'bunkerfee') in @endif  collapse-level-1">
-						<li>
-							<a href="{{url('guest/bunker-fee/create?type=bunkerfee')}}">Buat Baru</a>
-						</li>
-						<li>
-							<a href="{{url('guest/bunker-fee?type=bunkerfee')}}">Data</a>
-						</li>
-					</ul>
-				</li>
-
-				<li>
-					<a @if(\Request::segment(2) == 'bunker-fee' && $type == 'backloading') class="active" @endif href="javascript:void(0);" data-toggle="collapse" data-target="#menu-backloading"><div class="pull-left"><i class="fa fa-refresh mr-20"></i><span class="right-nav-text">Backloading</span></div><div class="pull-right"><i class="zmdi zmdi-caret-down"></i></div><div class="clearfix"></div></a>
-					<ul id="menu-backloading" class="collapse @if(\Request::segment(2) == 'bunker-fee'  && $type == 'backloading') in @endif  collapse-level-1">
-						<li>
-							<a href="{{url('guest/bunker-fee/create?type=backloading')}}">Buat Baru</a>
-						</li>
-						<li>
-							<a href="{{url('guest/bunker-fee?type=backloading')}}">Data</a>
-						</li>
-					</ul>
-				</li>
-
-				<li>
-					<a @if(\Request::segment(2) == 'customer') class="active" @endif href="javascript:void(0);" data-toggle="collapse" data-target="#menu-customer"><div class="pull-left"><i class="fa fa-user mr-20"></i><span class="right-nav-text">Customer</span></div><div class="pull-right"><i class="zmdi zmdi-caret-down"></i></div><div class="clearfix"></div></a>
-					<ul id="menu-customer" class="collapse @if(\Request::segment(2) == 'customer'  && $type == 'customer') in @endif  collapse-level-1">
-						<li>
-							<a href="{{url('guest/customer/create')}}">Buat Baru</a>
-						</li>
-						<li>
-							<a href="{{url('guest/customer')}}">Data</a>
-						</li>
-					</ul>
-				</li>
-				@endrole
+				
 				@role('administrator')
 				<li>
 					<a @if(\Request::segment(1) == '') class="active" @endif  href="{{url('/')}}"><div class="pull-left"><i class="zmdi zmdi-landscape mr-20"></i><span class="right-nav-text">Beranda</span></div><div class="clearfix"></div></a>
@@ -157,31 +120,31 @@
 				<li>
 					<a @if(\Request::segment(1) == 'master') class="active" @endif href="javascript:void(0);" data-toggle="collapse" data-target="#app_dr"><div class="pull-left"><i class="zmdi zmdi-apps mr-20"></i><span class="right-nav-text">Master Data </span></div><div class="pull-right"><i class="zmdi zmdi-caret-down"></i></div><div class="clearfix"></div></a>
 					<ul id="app_dr" class="collapse @if(\Request::segment(1) == 'master') in @endif  collapse-level-1">
-						@if(access_is_allowed_to_view('read.master.produk'))
+						{{-- @if(access_is_allowed_to_view('read.master.topic')) --}}
 						<li>
-							<a @if(\Request::segment(2) == 'produk') class="active-page" @endif href="{{url('master/produk')}}">Produk</a>
+							<a @if(\Request::segment(2) == 'topic') class="active-page" @endif href="{{url('master/topic')}}">Topic</a>
 						</li>
-						@endif
-						@if(access_is_allowed_to_view('read.master.kategori'))
+						{{-- @endif
+						@if(access_is_allowed_to_view('read.master.kategori')) --}}
 						<li>
-							<a @if(\Request::segment(2) == 'kategori' && \Input::get('tipe') == 'pelaksanaan') class="active-page" @endif href="{{url('master/kategori?tipe=pelaksanaan')}}">Jenis Pelaksanaan</a>
+							<a @if(\Request::segment(2) == 'question') class="active-page" @endif href="{{url('master/question')}}">Question</a>
 						</li>
-						@endif
-						@if(access_is_allowed_to_view('read.master.kategori'))
+						{{-- @endif
+						@if(access_is_allowed_to_view('read.master.kategori')) --}}
 						<li>
 							<a @if(\Request::segment(2) == 'kategori' && \Input::get('tipe') == 'agen_kapal') class="active-page" @endif href="{{url('master/kategori?tipe=agen_kapal')}}">Agen Kapal</a>
 						</li>
-						@endif
-						@if(access_is_allowed_to_view('read.master.kategori'))
+						{{-- @endif
+						@if(access_is_allowed_to_view('read.master.kategori')) --}}
 						<li>
 							<a @if(\Request::segment(2) == 'kategori' && \Input::get('tipe') == 'jenis_kapal') class="active-page" @endif href="{{url('master/kategori?tipe=jenis_kapal')}}">Jenis Kapal</a>
 						</li>
-						@endif
-						@if(access_is_allowed_to_view('read.master.kategori'))
+						{{-- @endif
+						@if(access_is_allowed_to_view('read.master.kategori')) --}}
 						<li>
 							<a @if(\Request::segment(2) == 'kategori' && \Input::get('tipe') == 'harga') class="active-page" @endif href="{{url('master/kategori?tipe=harga')}}">Jenis Harga</a>
 						</li>
-						@endif
+						{{-- @endif --}}
 						@if(access_is_allowed_to_view('read.master.kategori'))
 						<li>
 							<a @if(\Request::segment(2) == 'kategori' && \Input::get('tipe') == 'pemberi_order') class="active-page" @endif href="{{url('master/kategori?tipe=pemberi_order')}}">Pemberi Order</a>

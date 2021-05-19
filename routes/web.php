@@ -46,6 +46,8 @@ Route::group(['namespace' => 'Backend', 'middleware' => ['auth', 'role:administr
 
     // Master
     Route::group(['prefix' => 'master', 'namespace' => 'Master'], function () {
+        Route::resource('question', 'QuestionController');
+        Route::resource('topic', 'TopicController');
         Route::resource('kategori', 'KategoriController');
         
     });
