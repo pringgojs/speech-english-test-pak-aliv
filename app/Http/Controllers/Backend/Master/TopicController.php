@@ -58,8 +58,8 @@ class TopicController extends Controller
     {
         access_is_allowed('delete.master.topic');
 
-        $type = Topic::findOrFail($id);
-        $delete = AdminHelper::delete($type);
+        $model = Topic::findOrFail($id);
+        $delete = AdminHelper::delete($model);
         
         toaster_success('delete form success');
         return redirect('master/topic');

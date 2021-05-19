@@ -18,6 +18,7 @@ class AdminHelper
             $model->save();
             return $model;
         } catch (\Exception $e) {
+            dd($e);
             throw new AppException("Failed to save data", 503);
         }
     }
@@ -70,20 +71,21 @@ class AdminHelper
         $model->topic_id = $request->topic_id;
         $model->serial_number = $request->serial_number;
         self::save($model);
+        // dd($model);
 
+        /** drop answer exist */
         if ($request->id) {
-            /** drop answer exist */
             QuestionAnswer::where('topic_id', $model->id)->delete();
+        }
 
-            $answers = $request->answer;
-            $scores = $request->scores;
-            for ($i=0; $i < count($answers); $i++) { 
-                $answer = new QuestionAnswer;
-                $answer->topic_id =  $model->id;
-                $answer->answer = $answer[$i];
-                $answer->score = $scores[$i];
-                self::save($answers);
-            }
+        $answers = $request->answers;
+        $scores = $request->scores;
+        for ($i=0; $i < count($answers); $i++) { 
+            $answer = new QuestionAnswer;
+            $answer->question_id =  $model->id;
+            $answer->answer = $answers[$i];
+            $answer->score = $scores[$i];
+            self::save($answer);
         }
     }
 }
