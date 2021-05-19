@@ -75,7 +75,7 @@ class AdminHelper
 
         /** drop answer exist */
         if ($request->id) {
-            QuestionAnswer::where('topic_id', $model->id)->delete();
+            QuestionAnswer::where('question_id', $model->id)->delete();
         }
 
         $answers = $request->answers;
