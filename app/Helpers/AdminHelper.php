@@ -12,17 +12,18 @@ use Illuminate\Support\Facades\DB;
 
 class AdminHelper
 {
+    /** save */
     public static function save($model)
     {
         try {
             $model->save();
             return $model;
         } catch (\Exception $e) {
-            dd($e);
             throw new AppException("Failed to save data", 503);
         }
     }
 
+    /** delete */
     public static function delete($model)
     {
         try{
@@ -37,7 +38,6 @@ class AdminHelper
     /** Kategori */
     public static function createKategori($request, $id='')
     {
-        
         DB::beginTransaction();
         $category = $id ? Kategori::findOrFail($id) : new Kategori;
         $category->nama = $request->input('nama');
@@ -71,7 +71,6 @@ class AdminHelper
         $model->topic_id = $request->topic_id;
         $model->serial_number = $request->serial_number;
         self::save($model);
-        // dd($model);
 
         /** drop answer exist */
         if ($request->id) {
