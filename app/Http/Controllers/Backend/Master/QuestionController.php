@@ -15,7 +15,7 @@ class QuestionController extends Controller
         access_is_allowed('read.master.question');
 
         $view = view('backend.master.question.index');
-        $view->questions =  Question::orderBy('topic_id')->paginate(100);
+        $view->questions =  Question::orderBy('topic_id')->with(['answers', 'topic'])->paginate(100);
         return $view;
     }
 
