@@ -13,18 +13,18 @@
 				
 				{{-- @if(access_is_allowed_to_view('menu.ownuse')) --}}
 				<li>
-					<a @if(\Request::segment(1) == 'ownuse') class="active" @endif href="javascript:void(0);" data-toggle="collapse" data-target="#menu-ownuse"><div class="pull-left"><i class="zmdi zmdi-chart-donut mr-20"></i><span class="right-nav-text">Ownuse</span></div><div class="pull-right"><i class="zmdi zmdi-caret-down"></i></div><div class="clearfix"></div></a>
-					<ul id="menu-ownuse" class="collapse @if(\Request::segment(1) == 'ownuse') in @endif  collapse-level-1">
-						@if(access_is_allowed_to_view('create.ownuse'))
+					<a @if(\Request::segment(1) == 'student') class="active" @endif href="javascript:void(0);" data-toggle="collapse" data-target="#menu-student"><div class="pull-left"><i class="fa fa-group mr-20"></i><span class="right-nav-text">Student</span></div><div class="pull-right"><i class="zmdi zmdi-caret-down"></i></div><div class="clearfix"></div></a>
+					<ul id="menu-student" class="collapse @if(\Request::segment(1) == 'student') in @endif  collapse-level-1">
+						{{-- @if(access_is_allowed_to_view('create.student')) --}}
 						<li>
-							<a href="{{url('ownuse/create')}}">Buat Baru</a>
+							<a href="{{url('student/create')}}">Buat Baru</a>
 						</li>
-						@if(access_is_allowed_to_view('read.ownuse'))
-						@endif
+						{{-- @if(access_is_allowed_to_view('read.student'))
+						@endif --}}
 						<li>
-							<a href="{{url('ownuse')}}">Data</a>
+							<a href="{{url('student')}}">Data</a>
 						</li>
-						@endif
+						{{-- @endif --}}
 					</ul>
 				</li>
 				{{-- @endif --}}
@@ -128,35 +128,6 @@
 						@if(access_is_allowed_to_view('read.master.kategori')) --}}
 						<li>
 							<a @if(\Request::segment(2) == 'question') class="active-page" @endif href="{{url('master/question')}}">Question</a>
-						</li>
-						{{-- @endif
-						@if(access_is_allowed_to_view('read.master.kategori')) --}}
-						<li>
-							<a @if(\Request::segment(2) == 'kategori' && \Input::get('tipe') == 'agen_kapal') class="active-page" @endif href="{{url('master/kategori?tipe=agen_kapal')}}">Agen Kapal</a>
-						</li>
-						{{-- @endif
-						@if(access_is_allowed_to_view('read.master.kategori')) --}}
-						<li>
-							<a @if(\Request::segment(2) == 'kategori' && \Input::get('tipe') == 'jenis_kapal') class="active-page" @endif href="{{url('master/kategori?tipe=jenis_kapal')}}">Jenis Kapal</a>
-						</li>
-						{{-- @endif
-						@if(access_is_allowed_to_view('read.master.kategori')) --}}
-						<li>
-							<a @if(\Request::segment(2) == 'kategori' && \Input::get('tipe') == 'harga') class="active-page" @endif href="{{url('master/kategori?tipe=harga')}}">Jenis Harga</a>
-						</li>
-						{{-- @endif --}}
-						@if(access_is_allowed_to_view('read.master.kategori'))
-						<li>
-							<a @if(\Request::segment(2) == 'kategori' && \Input::get('tipe') == 'pemberi_order') class="active-page" @endif href="{{url('master/kategori?tipe=pemberi_order')}}">Pemberi Order</a>
-						</li>
-						@endif
-						@if(access_is_allowed_to_view('read.master.kode.meter'))
-						<li>
-							<a @if(\Request::segment(2) == 'kode-meter') class="active-page" @endif href="{{url('master/kode-meter')}}">Kode Meter</a>
-						</li>
-						@endif
-						<li>
-							<a @if(\Request::segment(2) == 'posisi-dermaga') class="active-page" @endif href="{{url('master/posisi-dermaga')}}">Posisi Deramaga</a>
 						</li>
 					</ul>
 				</li>

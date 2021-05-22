@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Backend\Master;
 
+use App\Constants;
 use App\Models\Topic;
 use App\Models\Question;
 use App\Helpers\AdminHelper;
@@ -34,7 +35,7 @@ class QuestionController extends Controller
         access_is_allowed('create.master.question');
 
         AdminHelper::createQuestion($request);
-        toaster_success('create form success');
+        toaster_success(Constants::$SAVE_SUCCESS_MESSAGE);
         return redirect('master/question');
     }
 
@@ -54,7 +55,7 @@ class QuestionController extends Controller
         access_is_allowed('update.master.question');
 
         AdminHelper::createQuestion($request);
-        toaster_success('create form success');
+        toaster_success(Constants::$UPDATE_SUCCESS_MESSAGE);
         return redirect('master/question');
     }
 
@@ -65,7 +66,7 @@ class QuestionController extends Controller
         $model = Question::findOrFail($id);
         $delete = AdminHelper::delete($model);
         
-        toaster_success('delete form success');
+        toaster_success(Constants::$DELETE_SUCCESS_MESSAGE);
         return redirect('master/question');
     }
 }

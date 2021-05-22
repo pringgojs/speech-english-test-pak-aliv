@@ -52,8 +52,9 @@ Route::group(['namespace' => 'Backend', 'middleware' => ['auth', 'role:administr
         
     });
 
-    // Setting
+    Route::resource('student', 'StudentController');
     Route::resource('setting', 'SettingController');
+
 
 
 });

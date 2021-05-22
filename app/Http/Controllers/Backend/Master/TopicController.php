@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Backend\Master;
 
+use App\Constants;
 use App\Models\Topic;
 use App\Helpers\AdminHelper;
 use Illuminate\Http\Request;
@@ -32,7 +33,7 @@ class TopicController extends Controller
         access_is_allowed('create.master.topic');
 
         AdminHelper::createTopic($request);
-        toaster_success('create form success');
+        toaster_success(Constants::$SAVE_SUCCESS_MESSAGE);
         return redirect('master/topic');
     }
 
@@ -50,7 +51,7 @@ class TopicController extends Controller
         access_is_allowed('update.master.topic');
 
         AdminHelper::createTopic($request);
-        toaster_success('create form success');
+        toaster_success(Constants::$UPDATE_SUCCESS_MESSAGE);
         return redirect('master/topic');
     }
 
@@ -61,7 +62,7 @@ class TopicController extends Controller
         $model = Topic::findOrFail($id);
         $delete = AdminHelper::delete($model);
         
-        toaster_success('delete form success');
+        toaster_success(Constants::$DELETE_SUCCESS_MESSAGE);
         return redirect('master/topic');
     }
 }

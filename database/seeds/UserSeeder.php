@@ -64,6 +64,11 @@ class UserSeeder extends Seeder
             'slug' => 'administrator'
         ]);
 
+        $admin_role = Role::create([
+            'name' => 'Student',
+            'slug' => 'student'
+        ]);
+
         $this->output->writeln('<info>--- Role Seeder Finished ---</info>');
     }
 
