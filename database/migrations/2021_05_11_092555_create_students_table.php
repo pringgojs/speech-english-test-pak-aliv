@@ -20,6 +20,7 @@ class CreateStudentsTable extends Migration
             $table->text('option')->nullable();
             $table->integer('user_id')->unsigned()->index();
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
+            $table->text('password')->nullable();
             $table->softDeletes();
             $table->timestamps();
         });

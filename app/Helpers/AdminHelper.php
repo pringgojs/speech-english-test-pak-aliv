@@ -2,8 +2,10 @@
 
 namespace App\Helpers;
 
+use App\User;
 use Carbon\Carbon;
 use App\Models\Topic;
+use App\Models\Student;
 use App\Models\Question;
 use App\Helpers\FileHelper;
 use App\Models\QuestionAnswer;
@@ -86,5 +88,33 @@ class AdminHelper
             $answer->score = $scores[$i];
             self::save($answer);
         }
+    }
+
+    /** Student */
+    public static function createStudent($request)
+    {
+        DB::beginTransaction();
+        $password = str_random(10);
+        if (!$request->id) {
+            $user = new User;
+            $user->name;
+            $user->password = bcrypt($password);
+            $user->username = 'student';
+            $user->save();
+
+            $user->attachRole(2);
+        }
+
+        $model = $request->id ? Student::findOrFail($request->id) : new Student;
+        $model->name = $request->input('name');
+        $model->identity_number = $request->input('identity_number');
+        if (!$request->id) {
+            $model->user_id = $user->id;
+            $model->password = $password;
+        }
+
+        self::save($model);
+        DB::commit();
+        return $model;
     }
 }

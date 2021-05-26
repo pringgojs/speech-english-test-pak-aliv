@@ -44,6 +44,10 @@ class PermissionSeeder extends Seeder
         PermissionHelper::create($group, ['menu', 'create', 'read', 'update', 'delete'], $group);
         $this->output->writeln('<info>updated setting permission</info>');
 
+        $group = 'STUDENT';
+        PermissionHelper::create($group, ['menu', 'create', 'read', 'update', 'delete'], $group);
+        $this->output->writeln('<info>updated student permission</info>');
+
         $group = 'MASTER';
         PermissionHelper::create('MASTER KATEGORI', ['create', 'read', 'update', 'delete'], $group);
         PermissionHelper::create('MASTER TOPIC', ['create', 'read', 'update', 'delete'], $group);

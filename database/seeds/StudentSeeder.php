@@ -18,11 +18,13 @@ class StudentSeeder extends Seeder
                 'name' => 'Andrew K. Elvin',
                 'identity_number' => 'S0009',
                 'user_id' => 2,
+                'password' => strtolower('Andrew')
             ],
             [
                 'name' => 'Sativa O. Rize',
                 'identity_number' => 'S0008',
-                'user_id' => 3
+                'user_id' => 3,
+                'password' => strtolower('Sativa')
             ]
         ];
         
@@ -36,7 +38,7 @@ class StudentSeeder extends Seeder
             ]);
 
             
-            $users = User::whereId('>1')->get();
+            $users = User::where('id', '>', 1)->get();
             foreach ($users as $key => $user) {
                 $user->attachRole(2);
                 

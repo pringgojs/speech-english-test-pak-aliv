@@ -3,30 +3,30 @@
 @section('content')
     <!-- Title -->
     @include('backend._bread-crumb', [
-        'title' => 'Pengguna',
+        'title' => 'Student',
         'breadcrumbs' => [
             0 => [
-                'link' => url('dashboard'),
+                'link' => url('/'),
                 'label' => 'dashboard'
             ],
             1 => [
-                'link' => url('user'),
-                'label' => 'Pengguna'
-            ]
+                'link' => '#',
+                'label' => 'Student'
+            ],
         ]
     ])
     
     <!-- /Title -->
-
+    
     <!-- Row -->
     <div class="row">
         <div class="col-sm-12">
             <div class="panel panel-default card-view">
                 <div class="panel-heading">
                     <div class="pull-left">
-                        @if(access_is_allowed_to_view('create.user'))
+                        @if(access_is_allowed_to_view('create.student'))
                         <div class="dt-buttons">
-                            <a class="dt-button buttons-copy buttons-html5" tabindex="0" aria-controls="example" href="{{url('user/create')}}"><i class="fa fa-plus"></i> <span>Buat baru</span></a>
+                            <a class="dt-button buttons-copy buttons-html5" tabindex="0" aria-controls="example" href="{{url('student/create')}}"><i class="fa fa-plus"></i> <span>Create new</span></a>
                         </div>
                         @endif
                         <h6 class="panel-title txt-dark"></h6>
@@ -42,41 +42,43 @@
                                         <tr>
                                             <th>No</th>
                                             <th>Name</th>
-                                            <th>Email</th>
-                                            <th>Role</th>
-                                            <th>Action</th>
+                                            <th>Identity Number</th>
+                                            <th>Account</th>
+                                            <th>Created At</th>
+                                            <th>#</th>
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        @foreach($users as $row => $user)
-                                        @php info($user->id); info($user->roleUser); @endphp
-                                        <tr id="tr-{{$user->id}}">
+                                        @foreach($students as $row => $student)
+                                        <tr id="tr-{{$student->id}}">
                                             <td>{{$row + 1}}</td>
-                                            <td><a href="{{url('user/'.$user->id.'/'.$user->roleUser->role_id)}}">{{$user->name}}</a></td>
-                                            <td>{{$user->email}}</td>
-                                            <td>{{$user->roleUser->role->name}}</td>
+                                            <td>{{$student->name}}</td>
+                                            <td>{{$student->identity_number}}</td>
+                                            <td>Username: {{$student->user->username}} <br> password: {{$student->password}}</td>
+                                            <td>{{date_format_view($student->created_at)}}</td>
                                             <td>
-                                                @if(access_is_allowed_to_view('permission.user'))
-                                                <a href="{{url('user/'.$user->id.'/'.$user->roleUser->role_id)}}" data-toggle="tooltip" data-original-title="Edit">
-                                                    <button class="btn btn-primary btn-icon-anim btn-square btn-sm"><i class="fa fa-lock"></i></button>
-                                                </a>
-                                                @endif
-                                                @if(access_is_allowed_to_view('update.user'))
-                                                <a href="{{url('user/'.$user->id.'/edit')}}" data-toggle="tooltip" data-original-title="Edit">
+                                                @if(access_is_allowed_to_view('update.student'))
+                                                <a href="{{url('student/'.$student->id.'/edit')}}" data-toggle="tooltip" data-original-title="Edit">
                                                     <button class="btn btn-default btn-icon-anim btn-square btn-sm"><i class="fa fa-pencil"></i></button>
                                                 </a>
                                                 @endif
-                                                @if(access_is_allowed_to_view('delete.user'))
-                                                <a onclick="secureDelete('{{url('user/'.$user->id)}}', '#tr-{{$user->id}}')" onclick="document.getElementById('form-delete-{{$user->id}}').submit();"  data-toggle="tooltip" data-original-title="Close">
+                                                @if(access_is_allowed_to_view('delete.student'))
+                                                <a onclick="secureDelete('{{url('student/'.$student->id)}}', '#tr-{{$student->id}}')" onclick="document.getElementById('form-delete-{{$student->id}}').submit();"  data-toggle="tooltip" data-original-title="Close">
                                                     <button class="btn btn-info btn-icon-anim btn-square  btn-sm"><i class="icon-trash"></i></button>                                                    
                                                 </a>
                                                 @endif
                                             </td>
                                         </tr>
                                         @endforeach
+
+                                        @if ($students->count() == 0)
+                                        <tr><td colspan="4">no data can be displayed
+                                        </td></tr>
+                                        @endif
                                     </tbody>
                                 </table>
                             </div>
+                            {{$students->links()}}
                         </div>
                     </div>
                 </div>
@@ -88,6 +90,6 @@
 
 @section('scripts')
 <script>
-    initDatatable('#datatable');
+    // initDatatable('#datatable');
 </script>
 @stop
