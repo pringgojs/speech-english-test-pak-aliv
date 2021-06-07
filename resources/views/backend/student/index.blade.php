@@ -29,8 +29,8 @@
                     </div>
                     <div class="pull-right">
                         @if(access_is_allowed_to_view('create.student'))
-                        <a class="btn btn-sm btn-primary " href="{{url('student/create')}}">Buat baru</a>
-                        <a class="btn btn-sm btn-default " href="{{url('student/import')}}">Import Data</a>
+                        <a class="btn btn-sm btn-primary " href="{{url('student/create')}}">Create new</a>
+                        <a class="btn btn-sm btn-default " href="{{url('student/import')}}">Import from excel</a>
                         @endif
                     </div>
                     <div class="clearfix"></div>
