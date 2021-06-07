@@ -45,5 +45,15 @@ class ExcelHelper
             }
         })->export('xls');
     }
+
+    public static function templateImport($file_name, $data, $sheet_name) 
+    {
+        \Excel::create($file_name, function ($excel) use ($data, $sheet_name)  {
+            $excel->sheet($sheet_name, function ($sheet) use ($data)  {
+                $sheet->fromArray($data, null, 'A1', false, false);
+            });
+
+        })->export('xls');
+    }
     
 }

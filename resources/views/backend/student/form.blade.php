@@ -40,7 +40,14 @@
                                     <label class="control-label mb-10 text-left">Identity Number*</label>
                                     <input type="text" name="identity_number" value="{{$student->identity_number}}" class="form-control" placeholder="" required>
                                 </div>
-                                
+                                <div class="form-group">
+                                    <label class="control-label mb-10 text-left">Phone</label>
+                                    <input type="text" name="phone" value="{{$student->phone}}" class="form-control" placeholder="" required>
+                                </div>
+                                <div class="form-group">
+                                    <label class="control-label mb-10 text-left">Address</label>
+                                    <textarea name="address" class="form-control" id="" cols="30" rows="4">{{$student->address}}</textarea>
+                                </div>
                                 <div class="form-group mb-0">
                                     <button type="submit" class="btn btn-success btn-anim"><i class="icon-rocket"></i><span class="btn-text">submit</span></button>
                                 </div>

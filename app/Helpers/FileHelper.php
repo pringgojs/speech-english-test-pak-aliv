@@ -2,8 +2,9 @@
 
 namespace App\Helpers;
 
-use Illuminate\Support\Str;
 use Image;
+use Illuminate\Support\Str;
+use App\Exceptions\AppException;
 
 class FileHelper
 {
@@ -30,6 +31,18 @@ class FileHelper
         Image::make(file_get_contents($base_64))->save($path);  
         
         return $path;
+    }
+
+    /** xlsValidate */
+    public static function xlsValidate()
+    {
+        $file = $_FILES['file']['name'];
+        $file_part = pathinfo($file);
+        $extension = $file_part['extension'];
+        $support_extention = array('xls', 'xlsx', 'xlsm');
+        if (! in_array($extension, $support_extention)) {
+            throw new AppException('FILE FORMAT NOT ACCEPTED, PLEASE USE XLS OR XLSX EXTENTION');
+        }
     }
     
 }

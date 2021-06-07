@@ -52,6 +52,10 @@ Route::group(['namespace' => 'Backend', 'middleware' => ['auth', 'role:administr
         
     });
 
+    Route::get('student/import-store-model', 'StudentController@importStoreModel');
+    Route::get('student/import-download-template', 'StudentController@importDownloadTemplate');
+    Route::post('student/import', 'StudentController@importStoreTemp');
+    Route::get('student/import', 'StudentController@import');
     Route::resource('student', 'StudentController');
     Route::resource('setting', 'SettingController');
 

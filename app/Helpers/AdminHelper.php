@@ -108,6 +108,8 @@ class AdminHelper
         $model = $request->id ? Student::findOrFail($request->id) : new Student;
         $model->name = $request->input('name');
         $model->identity_number = $request->input('identity_number');
+        $model->phone = $request->input('phone');
+        $model->address = $request->input('address');
         if (!$request->id) {
             $model->user_id = $user->id;
             $model->password = $password;

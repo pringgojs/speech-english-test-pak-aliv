@@ -18,12 +18,16 @@ class StudentSeeder extends Seeder
                 'name' => 'Andrew K. Elvin',
                 'identity_number' => 'S0009',
                 'user_id' => 2,
+                'phone' => '085736676648',
+                'address' => 'Jl. Kumbokarna Ponorogo 12',
                 'password' => strtolower('Andrew')
             ],
             [
                 'name' => 'Sativa O. Rize',
                 'identity_number' => 'S0008',
                 'user_id' => 3,
+                'phone' => '085736676648',
+                'address' => 'Jl. Kumbokarna Ponorogo 12',
                 'password' => strtolower('Sativa')
             ]
         ];

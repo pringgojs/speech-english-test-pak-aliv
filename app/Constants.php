@@ -14,6 +14,7 @@ class Constants {
   public static $GET_DATA_SUCCESS_MESSAGE = 'success';
   public static $GET_DATA_FAILED_MESSAGE = 'failed';
   public static $VALIDATION_FAILED_MESSAGE = 'form not valid';
+  public static $IMPORT_SUCCESS_MESSAGE = 'import data success';
 
 
   /** option student */

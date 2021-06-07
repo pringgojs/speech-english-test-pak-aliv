@@ -24,12 +24,14 @@
             <div class="panel panel-default card-view">
                 <div class="panel-heading">
                     <div class="pull-left">
+                        
+                        <h6 class="panel-title txt-dark">Student</h6>
+                    </div>
+                    <div class="pull-right">
                         @if(access_is_allowed_to_view('create.student'))
-                        <div class="dt-buttons">
-                            <a class="dt-button buttons-copy buttons-html5" tabindex="0" aria-controls="example" href="{{url('student/create')}}"><i class="fa fa-plus"></i> <span>Create new</span></a>
-                        </div>
+                        <a class="btn btn-sm btn-primary " href="{{url('student/create')}}">Buat baru</a>
+                        <a class="btn btn-sm btn-default " href="{{url('student/import')}}">Import Data</a>
                         @endif
-                        <h6 class="panel-title txt-dark"></h6>
                     </div>
                     <div class="clearfix"></div>
                 </div>
