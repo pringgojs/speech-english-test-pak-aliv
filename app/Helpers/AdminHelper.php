@@ -4,10 +4,12 @@ namespace App\Helpers;
 
 use App\User;
 use Carbon\Carbon;
+use App\Models\Group;
 use App\Models\Topic;
 use App\Models\Student;
 use App\Models\Question;
 use App\Helpers\FileHelper;
+use App\Models\GroupStudent;
 use App\Models\QuestionAnswer;
 use App\Exceptions\AppException;
 use Illuminate\Support\Facades\DB;
@@ -118,5 +120,29 @@ class AdminHelper
         self::save($model);
         DB::commit();
         return $model;
+    }
+
+    /** group */
+    public static function createGroup($request)
+    {
+        $model = $request->id ? Group::findOrFail($request->id) : new Group;
+        $model->name = $request->input('name');
+        return self::save($model);
+    }
+
+    public static function createGroupStudent($request)
+    {
+        $student_id = $request->student_id;
+        foreach ($student_id as $key => $id) {
+            $check = GroupStudent::where('student_id', $id)->where('group_id', $request->group_id)->first();
+            if ($check) continue;
+
+            $model = new GroupStudent;
+            $model->student_id = $id;
+            $model->group_id = $request->group_id;
+            self::save($model);
+        }
+
+        return 'OK';
     }
 }

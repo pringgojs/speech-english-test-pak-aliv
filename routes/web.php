@@ -43,7 +43,7 @@ Route::group(['namespace' => 'Backend', 'middleware' => ['auth', 'role:administr
     Route::get('/', 'BackendController@index');
     Route::get('reject', 'BackendController@rejectForm');
     Route::post('reject', 'BackendController@reject');
-
+    
     // Master
     Route::group(['prefix' => 'master', 'namespace' => 'Master'], function () {
         Route::resource('question', 'QuestionController');
@@ -51,7 +51,13 @@ Route::group(['namespace' => 'Backend', 'middleware' => ['auth', 'role:administr
         Route::resource('kategori', 'KategoriController');
         
     });
-
+    
+    Route::post('group/temp-add-student', 'GroupController@tempAddStudent');
+    Route::post('group/create-step-3', 'GroupController@storeStep3');
+    Route::get('group/create-step-3/{id}', 'GroupController@createStep3');
+    Route::post('group/create-step-2', 'GroupController@storeStep2');
+    Route::get('group/create-step-2/{id}', 'GroupController@createStep2');
+    Route::resource('group', 'GroupController');
     Route::get('student/import-store-model', 'StudentController@importStoreModel');
     Route::get('student/import-download-template', 'StudentController@importDownloadTemplate');
     Route::post('student/import', 'StudentController@importStoreTemp');

@@ -30,18 +30,18 @@
 				{{-- @endif --}}
 				{{-- @if(access_is_allowed_to_view('menu.bunker.umum')) --}}
 				<li>
-					<a @if(\Request::segment(1) == 'bunker-umum') class="active" @endif href="javascript:void(0);" data-toggle="collapse" data-target="#menu-bunker-umum"><div class="pull-left"><i class="fa fa-cubes mr-20"></i><span class="right-nav-text">Bunker Umum </span></div><div class="pull-right"><i class="zmdi zmdi-caret-down"></i></div><div class="clearfix"></div></a>
-					<ul id="menu-bunker-umum" class="collapse @if(\Request::segment(1) == 'bunker-umum') in @endif  collapse-level-1">
-						@if(access_is_allowed_to_view('create.bunker.umum'))
+					<a @if(\Request::segment(1) == 'group') class="active" @endif href="javascript:void(0);" data-toggle="collapse" data-target="#menu-group"><div class="pull-left"><i class="fa fa-cubes mr-20"></i><span class="right-nav-text">Group </span></div><div class="pull-right"><i class="zmdi zmdi-caret-down"></i></div><div class="clearfix"></div></a>
+					<ul id="menu-group" class="collapse @if(\Request::segment(1) == 'group') in @endif  collapse-level-1">
+						{{-- @if(access_is_allowed_to_view('create.bunker.umum')) --}}
 						<li>
-							<a href="{{url('bunker-umum/create')}}">Buat Baru</a>
+							<a href="{{url('group/create')}}">Buat Baru</a>
 						</li>
-						@endif
-						@if(access_is_allowed_to_view('read.bunker.umum'))
+						{{-- @endif
+						@if(access_is_allowed_to_view('read.bunker.umum')) --}}
 						<li>
-							<a href="{{url('bunker-umum')}}">Data</a>
+							<a href="{{url('group')}}">Data</a>
 						</li>
-						@endif
+						{{-- @endif --}}
 					</ul>
 				</li>
 				{{-- @endif --}}
