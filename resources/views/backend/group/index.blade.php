@@ -30,7 +30,6 @@
                     <div class="pull-right">
                         @if(access_is_allowed_to_view('create.group'))
                         <a class="btn btn-sm btn-primary " href="{{url('group/create')}}">Create new</a>
-                        <a class="btn btn-sm btn-default " href="{{url('group/import')}}">Import from excel</a>
                         @endif
                     </div>
                     <div class="clearfix"></div>
