@@ -6,9 +6,11 @@ use App\Constants;
 use App\Models\Temp;
 use App\Models\Group;
 use App\Models\Topic;
+use App\Models\GroupTopic;
 use App\Helpers\FileHelper;
 use App\Helpers\AdminHelper;
 use App\Helpers\ExcelHelper;
+use App\Models\GroupStudent;
 use Illuminate\Http\Request;
 use App\Helpers\TempDataHelper;
 use App\Http\Controllers\Controller;
@@ -31,6 +33,13 @@ class GroupController extends Controller
 
         $view = view('backend.group.form');
         $view->group = new Group;
+        return $view;
+    }
+
+    public function show($id)
+    {
+        $view = view('backend.group._show');
+        $view->model = Group::find($id);
         return $view;
     }
 
@@ -100,6 +109,24 @@ class GroupController extends Controller
         
         toaster_success(Constants::$DELETE_SUCCESS_MESSAGE);
         return redirect('group');
+    }
+
+    public function deleteStudentGroup($group_student_id)
+    {
+        $model = GroupStudent::findOrFail($group_student_id);
+        $delete = AdminHelper::delete($model);
+        
+        toaster_success(Constants::$DELETE_SUCCESS_MESSAGE);
+        return 'OK';
+    }
+
+    public function deleteTopicGroup($id)
+    {
+        $model = GroupTopic::findOrFail($id);
+        $delete = AdminHelper::delete($model);
+        
+        toaster_success(Constants::$DELETE_SUCCESS_MESSAGE);
+        return 'OK';
     }
 
     public function tempAddStudent(Request $request)

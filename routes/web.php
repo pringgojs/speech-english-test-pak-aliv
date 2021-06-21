@@ -52,6 +52,8 @@ Route::group(['namespace' => 'Backend', 'middleware' => ['auth', 'role:administr
         
     });
     
+    Route::delete('group/delete-topic/{group_topic_id}', 'GroupController@deleteTopicGroup');
+    Route::delete('group/delete-student/{group_student_id}', 'GroupController@deleteStudentGroup');
     Route::post('group/temp-add-student', 'GroupController@tempAddStudent');
     Route::post('group/create-step-3', 'GroupController@storeStep3');
     Route::get('group/create-step-3/{id}', 'GroupController@createStep3');

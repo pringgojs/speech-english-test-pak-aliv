@@ -58,6 +58,9 @@
                                             <td>{{$group->student->count()}}</td>
                                             <td>{{date_format_view($group->created_at)}}</td>
                                             <td>
+                                                <a onclick="showDetail('{{url("group/".$group->id)}}')" data-toggle="modal" data-target=".detail-modal" data-toggle="tooltip" data-toggle="tooltip" data-original-title="Detail">
+                                                    <button class="btn btn-primary btn-icon-anim btn-square btn-sm"><i class="fa fa-eye"></i></button>
+                                                </a>
                                                 @if(access_is_allowed_to_view('update.group'))
                                                 <a href="{{url('group/'.$group->id.'/edit')}}" data-toggle="tooltip" data-original-title="Edit">
                                                     <button class="btn btn-default btn-icon-anim btn-square btn-sm"><i class="fa fa-pencil"></i></button>
