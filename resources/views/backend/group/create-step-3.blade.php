@@ -28,21 +28,21 @@
             <div class="panel panel-default card-view">
                 <div class="panel-wrapper collapse in">
                     <div class="panel-body">
-                        @include('backend.group._wizard', ['from' => 'step-2'])
+                        @include('backend.group._wizard', ['from' => 'step-3'])
                         <br><br>
                         <div class="form-wrap">
-                            <form method="post" action="{{url('group/create-step-2')}}">
+                            <form method="post" action="{{url('group/create-step-3')}}">
                                 {!! csrf_field() !!}
                                 <input type="hidden" name="group_id" value="{{$group->id}}">
                                 <div class="form-group">
-                                    <select class="form-control select2" name="student" onchange="addStudent(this.value)">
+                                    <select class="form-control select2" name="topic" onchange="addTopic(this.value)">
                                     </select>
                                 </div>
 
                                 <table id="document" class="table table-responsive table-border" cellspacing="0" width="100%">
                                     <thead>
                                         <tr>
-                                            <th>Data Mahasiswa</th>
+                                            <th>Topic</th>
                                             <th style="width:5%"></th>
                                         </tr>
                                     </thead>
@@ -50,7 +50,7 @@
                                     </tbody>
                                 </table>
                                 <div class="form-group mb-0">
-                                    <button type="submit" class="btn btn-success btn-anim"><i class="icon-rocket"></i><span class="btn-text">submit and next step</span></button>
+                                    <button type="submit" class="btn btn-success btn-anim"><i class="icon-rocket"></i><span class="btn-text">submit</span></button>
                                 </div>
                             </form>
                         </div>
@@ -64,9 +64,9 @@
 
 @section('scripts')
     <script>
-        initItemSelect2('.select2', '{{url("api/student")}}');
+        initItemSelect2('.select2', '{{url("api/topic")}}');
 
-        var array_student_id = [];
+        var array_topic_id = [];
         /* Add document */
         var tb_document = $('#document').DataTable({
             bSort: false,
@@ -77,12 +77,12 @@
         });
         counter = 1;
 
-        function addStudent(id) {
-            var textarea = $('#student-id').val();
+        function addTopic(id) {
+            var textarea = $('#topic-id').val();
             var name = $('.select2 option:selected').text();
-            if (!array_student_id.includes(id)) {
+            if (!array_topic_id.includes(id)) {
                 addRowStudent(id, name);
-                array_student_id.push(id);
+                array_topic_id.push(id);
             } else {
                 notification('Error','Data sudah ada didaftar');
             }
@@ -90,7 +90,7 @@
 
         function addRowStudent(id, name) {
             tb_document.row.add( [
-                `<input type="hidden" name="student_id[]" value="`+id+`"> <input type="text" name="student_name[]" value="`+name+`" required class="form-control mhs-name-`+counter+`" />`,
+                `<input type="hidden" name="topic_id[]" value="`+id+`"> <input type="text" name="topic_name[]" value="`+name+`" required class="form-control mhs-name-`+counter+`" />`,
                 `<a href="javascript:void(0)" class="remove-row" title="Hapus"> <button type="button" class="btn btn-info btn-icon-anim btn-square"><i class="icon-trash"></i></button></a>`,
             ] ).draw( false );
             counter++;
@@ -99,25 +99,5 @@
         $('#document tbody').on('click', '.remove-row', function () {
             tb_document.row($(this).parents('tr')).remove().draw();
         });
-
-        /**
-        function addStudent(data) {
-            var group_id = $('#group_id').val();
-            var student_id = data.value;
-            $.ajax({
-                url: '{{url("group/temp-add-student")}}',
-                type: 'post',
-                data: {student_id: student_id, group_id: group_id},
-                success: function (res) {
-                    console.log(res);
-                },
-                error: function (res) {
-                    console.log(res);
-                    swal('Woop, Error');
-                }
-            })
-        }
-
-        */
     </script>
 @endsection

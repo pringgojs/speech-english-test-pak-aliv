@@ -8,6 +8,7 @@ use App\Models\Group;
 use App\Models\Topic;
 use App\Models\Student;
 use App\Models\Question;
+use App\Models\GroupTopic;
 use App\Helpers\FileHelper;
 use App\Models\GroupStudent;
 use App\Models\QuestionAnswer;
@@ -139,6 +140,22 @@ class AdminHelper
 
             $model = new GroupStudent;
             $model->student_id = $id;
+            $model->group_id = $request->group_id;
+            self::save($model);
+        }
+
+        return 'OK';
+    }
+
+    public static function createGroupTopic($request)
+    {
+        $topic_id = $request->topic_id;
+        foreach ($topic_id as $key => $id) {
+            $check = GroupTopic::where('topic_id', $id)->where('group_id', $request->group_id)->first();
+            if ($check) continue;
+
+            $model = new GroupTopic;
+            $model->topic_id = $id;
             $model->group_id = $request->group_id;
             self::save($model);
         }

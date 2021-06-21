@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Kapal;
+use App\Models\Topic;
 use App\Models\Vendor;
 use App\Models\Student;
 use App\Models\Inventory;
@@ -26,6 +27,32 @@ class ApiController extends Controller
             ->take($resultCount)
             ->get(['id', \DB::raw("CONCAT(identity_number, ' - ', name) as text")]);
         $count = Student::count();
+        $endCount = $offset + $resultCount;
+        $morePages = $endCount > $count;
+
+        $results = [
+            "results" => $vendor,
+            "pagination" => [
+                "more" => $morePages
+            ]
+        ];
+        return response()->json($results);
+    }
+
+    public function getTopic(Request $request)
+    {
+        $page = \Input::get('page');
+        $resultCount = 100;
+
+        $offset = ($page - 1) * $resultCount;
+        $search = \Input::get('search');
+
+        $vendor = Topic::whereRaw(\DB::raw("lower(name) like '%".$search."%'"))
+            ->orderBy('name')
+            ->skip($offset)
+            ->take($resultCount)
+            ->get(['id', \DB::raw("name as text")]);
+        $count = Topic::count();
         $endCount = $offset + $resultCount;
         $morePages = $endCount > $count;
 

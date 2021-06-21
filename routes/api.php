@@ -14,5 +14,6 @@ use Illuminate\Http\Request;
 */
 
 // API
+Route::get('topic', 'ApiController@getTopic');
 Route::get('student', 'ApiController@getStudent');
 

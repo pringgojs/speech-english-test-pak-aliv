@@ -11,7 +11,7 @@
                     <span class="number">2</span> <span class="head-font capitalize-font">Select Student</span>
                 </a>
             </li>
-            <li role="tab" class="last disabled" aria-disabled="false" aria-selected="false">
+            <li role="tab" class="last @if($from == 'step-3') current @endif @if($group->student) done @else disabled @endif" aria-disabled="false" aria-selected="false">
                 <a href="#" aria-controls="example-basic-p-2">
                     <span class="number">3</span> <span class="head-font capitalize-font">Select Topic</span>
                 </a>
