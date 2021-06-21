@@ -44,6 +44,8 @@
                                         <tr>
                                             <th>No</th>
                                             <th>Name</th>
+                                            <th>Topic</th>
+                                            <th>Student</th>
                                             <th>Created At</th>
                                             <th>#</th>
                                         </tr>
@@ -53,6 +55,8 @@
                                         <tr id="tr-{{$group->id}}">
                                             <td>{{$row + 1}}</td>
                                             <td>{{$group->name}}</td>
+                                            <td>{{$group->topic->count()}}</td>
+                                            <td>{{$group->student->count()}}</td>
                                             <td>{{date_format_view($group->created_at)}}</td>
                                             <td>
                                                 @if(access_is_allowed_to_view('update.group'))

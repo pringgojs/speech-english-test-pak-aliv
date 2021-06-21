@@ -37,7 +37,7 @@
                                 <div class="form-group">
                                     <input type="text" name="name" value="{{$group->name}}" class="form-control" placeholder="Group Name" required>
                                 </div>
-
+                                <br>
                                 <div class="form-group mb-0">
                                     <button type="submit" class="btn btn-success btn-anim"><i class="icon-rocket"></i><span class="btn-text">submit and next step</span></button>
                                 </div>

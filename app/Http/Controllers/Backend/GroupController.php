@@ -20,7 +20,8 @@ class GroupController extends Controller
         access_is_allowed('read.group');
 
         $view = view('backend.group.index');
-        $view->groups =  Group::orderBy('created_at')->paginate(100);
+        $view->groups =  Group::with(['student', 'topic'])->orderBy('created_at')->paginate(100);
+        
         return $view;
     }
 

@@ -47,8 +47,17 @@
                                         </tr>
                                     </thead>
                                     <tbody>
+                                        <?php $counter = 0;?>
+                                        @foreach ($group->topic as $item)
+                                            <tr>
+                                                <td><input type="hidden" name="topic_id[]" value="{{$item->topic_id}}"> <input type="text" name="topic_name[]" value="{{$item->topic->name}}" required class="form-control mhs-name-{{$counter}}" /></td>
+                                                <td><a href="javascript:void(0)" class="remove-row" title="Hapus"> <button type="button" class="btn btn-info btn-icon-anim btn-square"><i class="icon-trash"></i></button></a></td>
+                                            </tr>
+                                        <?php $counter++;?>
+                                        @endforeach
                                     </tbody>
                                 </table>
+                                <br>
                                 <div class="form-group mb-0">
                                     <button type="submit" class="btn btn-success btn-anim"><i class="icon-rocket"></i><span class="btn-text">submit</span></button>
                                 </div>
@@ -75,16 +84,17 @@
             bFilter: false,
             bScrollCollapse: false
         });
-        counter = 1;
+        
+        counter = {{$counter}};
 
         function addTopic(id) {
             var textarea = $('#topic-id').val();
             var name = $('.select2 option:selected').text();
-            if (!array_topic_id.includes(id)) {
-                addRowStudent(id, name);
-                array_topic_id.push(id);
-            } else {
+            var array_topic_id = $("input[name='topic_id[]']").map(function(){return $(this).val();}).get();
+            if (array_topic_id.includes(id)) {
                 notification('Error','Data sudah ada didaftar');
+            } else {
+                addRowStudent(id, name);
             }
         }
 

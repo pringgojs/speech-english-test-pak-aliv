@@ -134,6 +134,10 @@ class AdminHelper
     public static function createGroupStudent($request)
     {
         $student_id = $request->student_id;
+        /** delete all */
+        GroupStudent::where('group_id', $request->group_id)->delete();
+        if (!$student_id) return;
+
         foreach ($student_id as $key => $id) {
             $check = GroupStudent::where('student_id', $id)->where('group_id', $request->group_id)->first();
             if ($check) continue;
@@ -150,6 +154,9 @@ class AdminHelper
     public static function createGroupTopic($request)
     {
         $topic_id = $request->topic_id;
+        /** delete all */
+        GroupTopic::where('group_id', $request->group_id)->delete();
+        if (!$topic_id) return;
         foreach ($topic_id as $key => $id) {
             $check = GroupTopic::where('topic_id', $id)->where('group_id', $request->group_id)->first();
             if ($check) continue;

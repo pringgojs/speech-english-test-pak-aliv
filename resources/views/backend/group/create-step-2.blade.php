@@ -47,8 +47,17 @@
                                         </tr>
                                     </thead>
                                     <tbody>
+                                        <?php $counter = 0;?>
+                                        @foreach ($group->student as $item)
+                                            <tr>
+                                                <td><input type="hidden" name="student_id[]" value="{{$item->student_id}}"> <input type="text" name="student_name[]" value="{{$item->student->identity_number . ' - '.$item->student->name}}" required class="form-control mhs-name-{{$counter}}" /></td>
+                                                <td><a href="javascript:void(0)" class="remove-row" title="Hapus"> <button type="button" class="btn btn-info btn-icon-anim btn-square"><i class="icon-trash"></i></button></a></td>
+                                            </tr>
+                                        <?php $counter++;?>
+                                        @endforeach
                                     </tbody>
                                 </table>
+                                <br>
                                 <div class="form-group mb-0">
                                     <button type="submit" class="btn btn-success btn-anim"><i class="icon-rocket"></i><span class="btn-text">submit and next step</span></button>
                                 </div>
@@ -66,7 +75,7 @@
     <script>
         initItemSelect2('.select2', '{{url("api/student")}}');
 
-        var array_student_id = [];
+        
         /* Add document */
         var tb_document = $('#document').DataTable({
             bSort: false,
@@ -75,16 +84,16 @@
             bFilter: false,
             bScrollCollapse: false
         });
-        counter = 1;
+        counter = {{$counter}};
 
         function addStudent(id) {
             var textarea = $('#student-id').val();
             var name = $('.select2 option:selected').text();
-            if (!array_student_id.includes(id)) {
-                addRowStudent(id, name);
-                array_student_id.push(id);
-            } else {
+            var array_student_id = $("input[name='student_id[]']").map(function(){return $(this).val();}).get();
+            if (array_student_id.includes(id)) {
                 notification('Error','Data sudah ada didaftar');
+            } else {
+                addRowStudent(id, name);
             }
         }
 
