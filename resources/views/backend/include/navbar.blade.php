@@ -4,7 +4,7 @@
 			<div class="logo-wrap">
 				<a href="{{url('/')}}">
 					<img class="brand-img" style="height:30px; width: auto" src="{{asset(setting('logo_sidebar'))}}" alt="brand"/>
-					<span class="brand-text"></span>
+					<span class="brand-text">Speech</span>
 				</a>
 			</div>
 		</div>	

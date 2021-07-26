@@ -20,7 +20,7 @@ class StudentSeeder extends Seeder
                 'user_id' => 2,
                 'phone' => '085736676648',
                 'address' => 'Jl. Kumbokarna Ponorogo 12',
-                'password' => strtolower('Andrew')
+                'password' => strtolower('student')
             ],
             [
                 'name' => 'Sativa O. Rize',
@@ -28,7 +28,7 @@ class StudentSeeder extends Seeder
                 'user_id' => 3,
                 'phone' => '085736676648',
                 'address' => 'Jl. Kumbokarna Ponorogo 12',
-                'password' => strtolower('Sativa')
+                'password' => strtolower('student')
             ]
         ];
         
@@ -38,7 +38,7 @@ class StudentSeeder extends Seeder
                 'name' => $value['name'],
                 'username' => strtolower(explode(' ', $value['name'])[0]),
                 'email' => strtolower(explode(' ', $value['name'])[0]).'@gmail.com',
-                'password' => bcrypt(strtolower(explode(' ', $value['name'])[0])),
+                'password' => bcrypt('student'),
             ]);
 
             

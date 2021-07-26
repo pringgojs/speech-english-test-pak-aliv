@@ -38,6 +38,10 @@ Route::group(['middleware' => 'auth'], function () {
     });
 });
 
+// Student
+Route::group(['namespace' => 'Frontend', 'prefix' => 'front', 'middleware' => ['auth', 'role:student']], function () {
+    Route::get('/', 'FrontendController@index');
+});
 // Full Administrator
 Route::group(['namespace' => 'Backend', 'middleware' => ['auth', 'role:administrator']], function () {
     Route::get('/', 'BackendController@index');

@@ -9,7 +9,7 @@
 			</div>
 			<div class="panel-wrapper collapse in">
 				<div class="panel-body">
-					<p>Halo Admin, website ini bisa digunakan untuk melayani transaksi Bunker Umum, Bunker Ownuser, Loading PLN dan Loading APMS. Jika Anda ada kesulitan silahkan hubungi developer odyinggo@gmail.com (Pringgo Juni S).</p>
+					<p>Halo Admin, website ini dibuat oleh odyinggo@gmail.com (Pringgo Juni S).</p>
 				</div>
 			</div>
 		</div>

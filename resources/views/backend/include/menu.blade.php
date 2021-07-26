@@ -46,77 +46,7 @@
 				</li>
 				{{-- @endif --}}
 				{{-- @if(access_is_allowed_to_view('menu.loading.pln')) --}}
-				<li>
-					<a @if(\Request::segment(1) == 'loading-pln') class="active" @endif href="javascript:void(0);" data-toggle="collapse" data-target="#loading-pln-menu"><div class="pull-left"><i class="fa fa-first-order mr-20"></i><span class="right-nav-text">Loading MFO & Industri </span></div><div class="pull-right"><i class="zmdi zmdi-caret-down"></i></div><div class="clearfix"></div></a>
-					<ul id="loading-pln-menu" class="collapse @if(\Request::segment(1) == 'loading-pln') in @endif  collapse-level-1">
-						@if(access_is_allowed_to_view('create.loading.pln'))
-						<li>
-							<a href="{{url('loading-pln/create')}}">Buat Baru</a>
-						</li>
-						@endif
-						@if(access_is_allowed_to_view('read.loading.pln'))
-						<li>
-							<a href="{{url('loading-pln')}}">Data</a>
-						</li>
-						@endif
-					</ul>
-				</li>
-				{{-- @endif --}}
-
-				{{-- @if(access_is_allowed_to_view('menu.loading.apms')) --}}
-				<li>
-					<a @if(\Request::segment(1) == 'loading-apms') class="active" @endif href="javascript:void(0);" data-toggle="collapse" data-target="#loading-apms-menu"><div class="pull-left"><i class="fa fa-hashtag mr-20"></i><span class="right-nav-text">Loading APMS </span></div><div class="pull-right"><i class="zmdi zmdi-caret-down"></i></div><div class="clearfix"></div></a>
-					<ul id="loading-apms-menu" class="collapse @if(\Request::segment(1) == 'loading-apms') in @endif  collapse-level-1">
-						@if(access_is_allowed_to_view('read.loading.apms'))
-						<li>
-							<a href="{{url('loading-apms/create')}}">Buat Baru</a>
-						</li>
-						@endif
-						@if(access_is_allowed_to_view('read.loading.apms'))
-						<li>
-							<a href="{{url('loading-apms')}}">Data</a>
-						</li>
-						@endif
-					</ul>
-				</li>
-				<li>
-					<a @if(\Request::segment(1) == 'laporan') class="active" @endif href="javascript:void(0);" data-toggle="collapse" data-target="#laporan-menu"><div class="pull-left"><i class="fa fa-file mr-20"></i><span class="right-nav-text">Laporan </span></div><div class="pull-right"><i class="zmdi zmdi-caret-down"></i></div><div class="clearfix"></div></a>
-					<ul id="laporan-menu" class="collapse @if(\Request::segment(1) == 'laporan') in @endif  collapse-level-1">
-						<li>
-							<a href="{{url('laporan/ownuse')}}">Ownuse</a>
-						</li>
-						<li>
-							<a href="{{url('laporan/bunker-umum')}}">Bunker Umum</a>
-						</li>
-						<li>
-							<a href="{{url('laporan/loading-pln')}}">Loading MFO & Industri</a>
-						</li>
-						<li>
-							<a href="{{url('laporan/loading-apms')}}">Loading APMS</a>
-						</li>
-					</ul>
-				</li>
-
-				<li>
-					<a @if(\Request::segment(1) == 'bunker-fee') class="active" @endif href="{{url('bunker-fee')}}"><div class="pull-left"><i class="fa fa-money  mr-20"></i><span class="right-nav-text">Bunker Fee </span></div><div class="clearfix"></div></a>
-				</li>
-				<li>
-					<a @if(\Request::segment(1) == 'rapat') class="active" @endif href="{{url('rapat')}}"><div class="pull-left"><i class="fa fa-group  mr-20"></i><span class="right-nav-text">Rapat P2T </span></div><div class="clearfix"></div></a>
-				</li>
-				{{-- @endif --}}
-				<li><hr class="light-grey-hr mb-10"/></li>
-				<li class="navigation-header">
-					<span>Master</span>
-					<i class="zmdi zmdi-more"></i>
-				</li>
-				@if(access_is_allowed_to_view('read.kapal'))
-				<li>
-					<a @if(\Request::segment(1)=='kapal' ) class="active" @endif href="{{url('kapal')}}">
-						<div class="pull-left"><i class="zmdi zmdi-shopping-basket  mr-20"></i><span class="right-nav-text">Kapal </span></div>
-						<div class="clearfix"></div>
-					</a>
-				</li>
-				@endif
+				
 				<li>
 					<a @if(\Request::segment(1) == 'master') class="active" @endif href="javascript:void(0);" data-toggle="collapse" data-target="#app_dr"><div class="pull-left"><i class="zmdi zmdi-apps mr-20"></i><span class="right-nav-text">Master Data </span></div><div class="pull-right"><i class="zmdi zmdi-caret-down"></i></div><div class="clearfix"></div></a>
 					<ul id="app_dr" class="collapse @if(\Request::segment(1) == 'master') in @endif  collapse-level-1">

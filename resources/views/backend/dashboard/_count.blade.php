@@ -9,8 +9,8 @@
                         <div class="container-fluid">
                             <div class="row">
                                 <div class="col-xs-6 text-center pl-0 pr-0 data-wrap-left">
-                                    <span class="txt-light block counter"><span class="counter-anim">12</span></span>
-                                    <span class="weight-500 uppercase-font txt-light block font-13">Lorem Ipsum</span>
+                                    <span class="txt-light block counter"><span class="counter-anim">120</span></span>
+                                    <span class="weight-500 uppercase-font txt-light block font-13">Student</span>
                                 </div>
                                 <div class="col-xs-6 text-center  pl-0 pr-0 data-wrap-right">
                                     <i class="zmdi zmdi-plus txt-light data-right-rep-icon"></i>
@@ -33,7 +33,7 @@
                             <div class="row">
                                 <div class="col-xs-6 text-center pl-0 pr-0 data-wrap-left">
                                     <span class="txt-light block counter"><span class="counter-anim">12</span></span>
-                                    <span class="weight-500 uppercase-font txt-light block">Lorem Ipsum</span>
+                                    <span class="weight-500 uppercase-font txt-light block">Topic</span>
                                 </div>
                                 <div class="col-xs-6 text-center  pl-0 pr-0 data-wrap-right">
                                     <i class="zmdi zmdi-plus txt-light data-right-rep-icon"></i>
@@ -56,8 +56,8 @@
                         <div class="container-fluid">
                             <div class="row">
                                 <div class="col-xs-6 text-center pl-0 pr-0 data-wrap-left">
-                                    <span class="txt-light block counter"><span class="counter-anim">12</span></span>
-                                    <span class="weight-500 uppercase-font txt-light block">Lorem Ipsum</span>
+                                    <span class="txt-light block counter"><span class="counter-anim">300</span></span>
+                                    <span class="weight-500 uppercase-font txt-light block">Question</span>
                                 </div>
                                 <div class="col-xs-6 text-center  pl-0 pr-0 data-wrap-right">
                                     <i class="zmdi zmdi-plus txt-light data-right-rep-icon"></i>
@@ -80,8 +80,8 @@
                         <div class="container-fluid">
                             <div class="row">
                                 <div class="col-xs-6 text-center pl-0 pr-0 data-wrap-left">
-                                    <span class="txt-light block counter"><span class="counter-anim">12</span></span>
-                                    <span class="weight-500 uppercase-font txt-light block">Lorem Ipsum</span>
+                                    <span class="txt-light block counter"><span class="counter-anim">3</span></span>
+                                    <span class="weight-500 uppercase-font txt-light block">User</span>
                                 </div>
                                 <div class="col-xs-6 text-center  pl-0 pr-0 pt-25  data-wrap-right">
                                     <i class="zmdi zmdi-plus txt-light data-right-rep-icon"></i>
