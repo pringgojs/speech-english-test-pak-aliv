@@ -1,11 +1,11 @@
-<nav class="navbar @auth navbar-inverse @endauth navbar-fixed-top bg-blue">
+<nav class="navbar @auth navbar-inverse @endauth navbar-fixed-top bg-orange">
 	<div class="nav-wrap">
 		<div class="mobile-only-brand pull-left">
 			<a id="toggle_nav_btn" style="color:#fff" class="toggle-left-nav-btn inline-block ml-20 pull-left"
 				href="javascript:void(0);">
 				<i class="fa fa-align-left"></i>
 			</a>
-			<div class="nav-header pull-left text-center" @guest style="width:600px" @endguest>
+			<div class="nav-header pull-left text-center  bg-orange" @guest style="width:600px" @endguest>
 				<div class="logo-wrap" @guest style="width:600px" @endguest>
 					<a href="{{url('/')}}">
 						@guest

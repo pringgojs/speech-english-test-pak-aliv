@@ -11,4 +11,9 @@ class FrontendController extends Controller
     {
         return view('frontend.index');
     }
+
+    public function form()
+    {
+        return view('frontend.form');
+    }
 }

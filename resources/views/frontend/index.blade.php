@@ -3,15 +3,11 @@
 @section('content')
     <!-- Title -->
     @include('backend._bread-crumb', [
-        'title' => 'Pegawai',
+        'title' => 'Dashboard',
         'breadcrumbs' => [
             0 => [
-                'link' => url('dashboard'),
-                'label' => 'dashboard'
-            ],
-            1 => [
-                'link' => url('employee'),
-                'label' => 'Pegawai'
+                'link' => '#',
+                'label' => ''
             ]
         ]
     ])
@@ -20,93 +16,191 @@
 
     <!-- Row -->
     <div class="row">
-        <div class="col-sm-12">
-            <div class="panel panel-default card-view">
-                <div class="panel-heading">
-                    <div class="pull-left">
-                        <div class="dt-buttons">
-                            <a class="dt-button buttons-copy buttons-html5" tabindex="0" aria-controls="example" href="{{url('employee/create')}}"><i class="fa fa-plus"></i> <span>Buat baru</span></a>
-                            <a class="dt-button buttons-copy buttons-html5" tabindex="0" aria-controls="example" href="{{url('employee/import')}}"><i class="fa fa-upload"></i> <span>Import From Excel</span></a>
-                        </div>
-                        <h6 class="panel-title txt-dark"></h6>
-                    </div>
-                    <div class="clearfix"></div>
-                </div>
-                <div class="panel-wrapper collapse in">
-                    <div class="panel-body">
-                        <div class="row">
-                            <div class="col-md-3">
-                                <form action="{{url('employee')}}">
-                                    <div class="form-group">
-                                        <?php $status = \Input::get('status');?>
-                                        <label class="control-label mb-10 text-left">Cari. nama / nip / posisi / bagian</label>
-                                        <input type="text" class="form-control" name="search" value="{{\Input::get('search')}}" id="">
+        <div class="col-md-8">
+            <div class="row">
+                <div class="col-sm-6 col-xs-12">
+                    <div class="panel panel-default card-view pa-0">
+                        <div class="panel-wrapper collapse in">
+                            <div class="panel-body pa-0">
+                                <div class="sm-data-box">
+                                    <div class="container-fluid">
+                                        <div class="row">
+                                            <div class="col-xs-6 text-center pl-0 pr-0 data-wrap-left">
+                                                <span class="txt-dark block counter"><span class="counter-anim">914,001</span></span>
+                                                <span class="capitalize-font block">total kuis selesai</span>
+                                            </div>
+                                            <div class="col-xs-6 text-center  pl-0 pr-0 data-wrap-right">
+                                                <i class="icon-check data-right-rep-icon"></i>
+                                            </div>
+                                        </div>
+                                        <div class="progress-anim">
+                                            <div class="progress">
+                                                <div class="progress-bar progress-bar-orange
+                                                wow animated progress-animated" role="progressbar" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100" style="width: 70%;"></div>
+                                            </div>
+                                        </div>
                                     </div>
-                                </form>
-                            </div>
-                            <div class="col-md-3">
-                                {{-- filter --}}
-                                <div class="form-group">
-                                    <label class="control-label mb-10 text-left">Filter berdasarkan status</label>
-                                    <select name="" id="filter" onchange="filter(this.value)" class="form-control">
-                                        <option value="2" @if(\Input::get('status') == 2) selected @endif>Semua</option>
-                                        <option value="1" @if(\Input::get('status') == 1) selected @endif>Aktif</option>
-                                        <option value="0" @if(\Input::get('status') == 0) selected @endif>Non Aktif</option>
-                                    </select>
                                 </div>
                             </div>
                         </div>
-                        <div class="table-wrap">
-                            <div class="table-responsive">
-                                <table id="datatable" class="table table-hover display  pb-30" >
-                                    <thead>
-                                        <tr>
-                                            <th>Foto</th>
-                                            <th>Nama</th>
-                                            <th>NIP/NIK</th>
-                                            <th>Telepon</th>
-                                            <th>Email</th>
-                                            <th>Posisi / Jabatan</th>
-                                            <th>Bagian</th>
-                                            <th>Status</th>
-                                            <th>Aksi</th>
-                                        </tr>
-                                    </thead>
-                                </table>
+                    </div>
+                </div>
+
+
+                <div class="col-sm-6 col-xs-12">
+                    <div class="panel panel-default card-view pa-0">
+                        <div class="panel-wrapper collapse in">
+                            <div class="panel-body pa-0">
+                                <div class="sm-data-box">
+                                    <div class="container-fluid">
+                                        <div class="row">
+                                            <div class="col-xs-6 text-center pl-0 pr-0 data-wrap-left">
+                                                <span class="txt-dark block counter"><span class="counter-anim">46.41</span>%</span>
+                                                <span class="capitalize-font block">Total kuis belum selesai</span>
+                                            </div>
+                                            <div class="col-xs-6 text-center  pl-0 pr-0 data-wrap-right">
+                                                <i class="icon-close  data-right-rep-icon"></i>
+                                            </div>
+                                        </div>
+                                        <div class="progress-anim">
+                                            <div class="progress">
+                                                <div class="progress-bar progress-bar-orange
+                                                wow animated progress-animated" role="progressbar" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100" style="width: 80%;"></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>	
-        </div>
-    </div>
-    <!-- /Row -->
 
-    <div class="row">
-        <div class="modal fade detail-modal" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true" style="display: none;">
-            <div class="modal-dialog modal-lg" id="modal-detail">
-
+                {{-- daftar kuis --}}
+                <div class="col-sm-12 col-xs-12">
+                    <div class="panel panel-default border-panel panel-tabs card-view">
+                        <div class="panel-heading">
+                            <div class="pull-left auto-width">
+                                <h6 class="panel-title txt-dark">Daftar Kuis</h6>
+                            </div>
+                            <div class="pull-right auto-width mt-0">
+                                <div class="tab-struct custom-tab-1">
+                                    <ul role="tablist" class="nav nav-tabs" id="myTabs_9">
+                                        <li class="pull-left active" role="presentation"><a aria-expanded="true" data-toggle="tab" role="tab" id="home_tab_9" href="#home_9">Last Month</a></li>
+                                        <li role="presentation" class="pull-left"><a data-toggle="tab" id="profile_tab_9" role="tab" href="#profile_9" aria-expanded="false">All Time</a></li>
+                                    </ul>
+                                </div>	
+                            </div>
+                            
+                            <div class="clearfix"></div>
+                        </div>
+                        <div class="panel-wrapper collapse in">
+                            <div class="panel-body pa-0 row">
+                                <div class="tab-content" id="myTabContent_9">
+                                    <div id="home_9" class="tab-pane fade active in" role="tabpanel">
+                                        <div class="table-wrap">
+                                            <div class="table-responsive">
+                                              <table class="table table-hover mt-15 mb-0">
+                                                <thead>
+                                                  <tr>
+                                                    <th>#</th>
+                                                    <th>Topik</th>
+                                                    <th>Status</th>
+                                                    <th>Skor</th>
+                                                  </tr>
+                                                </thead>
+                                                <tbody>
+                                                  <tr>
+                                                    <td>1</td>
+                                                    <td>Milk Powder</td>
+                                                    <td><span class="peity-line" data-width="90" data-peity="{ &quot;fill&quot;: [&quot;transparent&quot;], &quot;stroke&quot;:[&quot;#ff6028&quot;]}" data-height="40" style="display: none;">0,-3,-2,-4,5,-4,3,-2,5,-1</span><svg class="peity" height="40" width="90"><polygon fill="transparent" points="0 22.166666666666668 0 22.166666666666668 10 35.166666666666664 20 30.833333333333336 30 39.5 40 0.5 50 39.5 60 9.166666666666668 70 30.833333333333336 80 0.5 90 26.5 90 22.166666666666668"></polygon><polyline fill="none" points="0 22.166666666666668 10 35.166666666666664 20 30.833333333333336 30 39.5 40 0.5 50 39.5 60 9.166666666666668 70 30.833333333333336 80 0.5 90 26.5" stroke="#ff6028" stroke-width="1" stroke-linecap="square"></polyline></svg> </td>
+                                                    <td><span class="text-danger text-semibold"><i class="fa fa-level-down" aria-hidden="true"></i> 28.76%</span> </td>
+                                                  </tr>
+                                                  <tr>
+                                                    <td>2</td>
+                                                    <td>Air Conditioner</td>
+                                                    <td><span class="peity-line" data-width="90" data-peity="{ &quot;fill&quot;: [&quot;transparent&quot;], &quot;stroke&quot;:[&quot;#ff6028&quot;]}" data-height="40" style="display: none;">0,-1,1,-2,-3,1,-2,-3,1,-2</span><svg class="peity" height="40" width="90"><polygon fill="transparent" points="0 10.25 0 10.25 10 20 20 0.5 30 29.75 40 39.5 50 0.5 60 29.75 70 39.5 80 0.5 90 29.75 90 10.25"></polygon><polyline fill="none" points="0 10.25 10 20 20 0.5 30 29.75 40 39.5 50 0.5 60 29.75 70 39.5 80 0.5 90 29.75" stroke="#ff6028" stroke-width="1" stroke-linecap="square"></polyline></svg> </td>
+                                                    <td><span class="text-danger text-semibold"><i class="fa fa-level-down" aria-hidden="true"></i> 8.55%</span> </td>
+                                                  </tr>
+                                                  <tr>
+                                                    <td>3</td>
+                                                    <td>RC Cars</td>
+                                                    <td><span class="peity-line" data-width="90" data-peity="{ &quot;fill&quot;: [&quot;transparent&quot;], &quot;stroke&quot;:[&quot;#ff6028&quot;]}" data-height="40" style="display: none;">0,3,6,1,2,4,6,3,2,1</span><svg class="peity" height="40" width="90"><polygon fill="transparent" points="0 39.5 0 39.5 10 20 20 0.5 30 33 40 26.5 50 13.5 60 0.5 70 20 80 26.5 90 33 90 39.5"></polygon><polyline fill="none" points="0 39.5 10 20 20 0.5 30 33 40 26.5 50 13.5 60 0.5 70 20 80 26.5 90 33" stroke="#ff6028" stroke-width="1" stroke-linecap="square"></polyline></svg> </td>
+                                                    <td><span class="text-success text-semibold"><i class="fa fa-level-up" aria-hidden="true"></i> 58.56%</span> </td>
+                                                  </tr>
+                                                  <tr>
+                                                    <td>4</td>
+                                                    <td>Down Coat</td>
+                                                    <td><span class="peity-line" data-width="90" data-peity="{ &quot;fill&quot;: [&quot;transparent&quot;], &quot;stroke&quot;:[&quot;#ff6028&quot;]}" data-height="40" style="display: none;">0,3,6,4,5,4,7,3,4,2</span><svg class="peity" height="40" width="90"><polygon fill="transparent" points="0 39.5 0 39.5 10 22.78571428571429 20 6.0714285714285765 30 17.214285714285715 40 11.642857142857142 50 17.214285714285715 60 0.5 70 22.78571428571429 80 17.214285714285715 90 28.357142857142858 90 39.5"></polygon><polyline fill="none" points="0 39.5 10 22.78571428571429 20 6.0714285714285765 30 17.214285714285715 40 11.642857142857142 50 17.214285714285715 60 0.5 70 22.78571428571429 80 17.214285714285715 90 28.357142857142858" stroke="#ff6028" stroke-width="1" stroke-linecap="square"></polyline></svg> </td>
+                                                    <td><span class="text-success text-semibold"><i class="fa fa-level-up" aria-hidden="true"></i> 35.76%</span> </td>
+                                                  </tr>
+                                                  <tr>
+                                                    <td>5</td>
+                                                    <td>Xyz Byke</td>
+                                                    <td><span class="peity-line" data-width="90" data-peity="{ &quot;fill&quot;: [&quot;transparent&quot;], &quot;stroke&quot;:[&quot;#ff6028&quot;]}" data-height="40" style="display: none;">0,3,6,4,5,4,7,3,4,2</span><svg class="peity" height="40" width="90"><polygon fill="transparent" points="0 39.5 0 39.5 10 22.78571428571429 20 6.0714285714285765 30 17.214285714285715 40 11.642857142857142 50 17.214285714285715 60 0.5 70 22.78571428571429 80 17.214285714285715 90 28.357142857142858 90 39.5"></polygon><polyline fill="none" points="0 39.5 10 22.78571428571429 20 6.0714285714285765 30 17.214285714285715 40 11.642857142857142 50 17.214285714285715 60 0.5 70 22.78571428571429 80 17.214285714285715 90 28.357142857142858" stroke="#ff6028" stroke-width="1" stroke-linecap="square"></polyline></svg> </td>
+                                                    <td><span class="text-success text-semibold"><i class="fa fa-level-up" aria-hidden="true"></i> 35.76%</span> </td>
+                                                  </tr>
+                                                </tbody>
+                                              </table>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div id="profile_9" class="tab-pane fade" role="tabpanel">
+                                        <div class="table-wrap">
+                                            <div class="table-responsive">
+                                              <table class="table table-hover mb-0">
+                                                <thead>
+                                                  <tr>
+                                                    <th>#</th>
+                                                    <th>Products</th>
+                                                    <th>Popularity</th>
+                                                    <th>Sales</th>
+                                                  </tr>
+                                                </thead>
+                                                <tbody>
+                                                  <tr>
+                                                    <td>1</td>
+                                                    <td>Milk Powder</td>
+                                                    <td><span class="peity-line" data-width="90" data-peity="{ &quot;fill&quot;: [&quot;transparent&quot;], &quot;stroke&quot;:[&quot;#ff6028&quot;]}" data-height="40" style="display: none;">4,-4,-2,-4,5,-4,3,-1,5,-1</span><svg class="peity" height="40" width="90"><polygon fill="transparent" points="0 22.166666666666668 0 4.833333333333336 10 39.5 20 30.833333333333336 30 39.5 40 0.5 50 39.5 60 9.166666666666668 70 26.5 80 0.5 90 26.5 90 22.166666666666668"></polygon><polyline fill="none" points="0 4.833333333333336 10 39.5 20 30.833333333333336 30 39.5 40 0.5 50 39.5 60 9.166666666666668 70 26.5 80 0.5 90 26.5" stroke="#ff6028" stroke-width="1" stroke-linecap="square"></polyline></svg> </td>
+                                                    <td><span class="text-success text-semibold"><i class="fa fa-level-up" aria-hidden="true"></i> 18.76%</span> </td>
+                                                  </tr>
+                                                  <tr>
+                                                    <td>2</td>
+                                                    <td>Air Conditioner</td>
+                                                    <td><span class="peity-line" data-width="90" data-peity="{ &quot;fill&quot;: [&quot;transparent&quot;], &quot;stroke&quot;:[&quot;#ff6028&quot;]}" data-height="40" style="display: none;">0,-1,1,-4,-3,1,-2,-3,2,-2</span><svg class="peity" height="40" width="90"><polygon fill="transparent" points="0 13.5 0 13.5 10 20 20 7 30 39.5 40 33 50 7 60 26.5 70 33 80 0.5 90 26.5 90 13.5"></polygon><polyline fill="none" points="0 13.5 10 20 20 7 30 39.5 40 33 50 7 60 26.5 70 33 80 0.5 90 26.5" stroke="#ff6028" stroke-width="1" stroke-linecap="square"></polyline></svg> </td>
+                                                    <td><span class="text-danger text-semibold"><i class="fa fa-level-down" aria-hidden="true"></i> 48.55%</span> </td>
+                                                  </tr>
+                                                  <tr>
+                                                    <td>3</td>
+                                                    <td>RC Cars</td>
+                                                    <td><span class="peity-line" data-width="90" data-peity="{ &quot;fill&quot;: [&quot;transparent&quot;], &quot;stroke&quot;:[&quot;#ff6028&quot;]}" data-height="40" style="display: none;">0,9,6,1,2,4,6,3,7,1</span><svg class="peity" height="40" width="90"><polygon fill="transparent" points="0 39.5 0 39.5 10 0.5 20 13.5 30 35.166666666666664 40 30.833333333333336 50 22.166666666666668 60 13.5 70 26.5 80 9.166666666666668 90 35.166666666666664 90 39.5"></polygon><polyline fill="none" points="0 39.5 10 0.5 20 13.5 30 35.166666666666664 40 30.833333333333336 50 22.166666666666668 60 13.5 70 26.5 80 9.166666666666668 90 35.166666666666664" stroke="#ff6028" stroke-width="1" stroke-linecap="square"></polyline></svg> </td>
+                                                    <td><span class="text-success text-semibold"><i class="fa fa-level-up" aria-hidden="true"></i> 8.56%</span> </td>
+                                                  </tr>
+                                                  <tr>
+                                                    <td>4</td>
+                                                    <td>Down Coat</td>
+                                                    <td><span class="peity-line" data-width="90" data-peity="{ &quot;fill&quot;: [&quot;transparent&quot;], &quot;stroke&quot;:[&quot;#ff6028&quot;]}" data-height="40" style="display: none;">7,5,6,4,5,4,6,5,4,2</span><svg class="peity" height="40" width="90"><polygon fill="transparent" points="0 39.5 0 0.5 10 11.642857142857142 20 6.0714285714285765 30 17.214285714285715 40 11.642857142857142 50 17.214285714285715 60 6.0714285714285765 70 11.642857142857142 80 17.214285714285715 90 28.357142857142858 90 39.5"></polygon><polyline fill="none" points="0 0.5 10 11.642857142857142 20 6.0714285714285765 30 17.214285714285715 40 11.642857142857142 50 17.214285714285715 60 6.0714285714285765 70 11.642857142857142 80 17.214285714285715 90 28.357142857142858" stroke="#ff6028" stroke-width="1" stroke-linecap="square"></polyline></svg> </td>
+                                                    <td><span class="text-success text-semibold"><i class="fa fa-level-up" aria-hidden="true"></i> 98.76%</span> </td>
+                                                  </tr>
+                                                  <tr>
+                                                    <td>5</td>
+                                                    <td>Xyz Byke</td>
+                                                    <td><span class="peity-line" data-width="90" data-peity="{ &quot;fill&quot;: [&quot;transparent&quot;], &quot;stroke&quot;:[&quot;#ff6028&quot;]}" data-height="40" style="display: none;">0,3,6,4,5,4,7,3,4,2</span><svg class="peity" height="40" width="90"><polygon fill="transparent" points="0 39.5 0 39.5 10 22.78571428571429 20 6.0714285714285765 30 17.214285714285715 40 11.642857142857142 50 17.214285714285715 60 0.5 70 22.78571428571429 80 17.214285714285715 90 28.357142857142858 90 39.5"></polygon><polyline fill="none" points="0 39.5 10 22.78571428571429 20 6.0714285714285765 30 17.214285714285715 40 11.642857142857142 50 17.214285714285715 60 0.5 70 22.78571428571429 80 17.214285714285715 90 28.357142857142858" stroke="#ff6028" stroke-width="1" stroke-linecap="square"></polyline></svg> </td>
+                                                    <td><span class="text-success text-semibold"><i class="fa fa-level-up" aria-hidden="true"></i> 12.76%</span> </td>
+                                                  </tr>
+                                                </tbody>
+                                              </table>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
 @stop
 
 @section('scripts')
-<script>
-
-    function filter(status) {
-        location.href = '{{url("/")}}/employee?status='+status;
-    }
-
-    function showDetail(url) {
-        $.ajax({
-            url: url,
-            success: function(result){
-                $("#modal-detail").html(result);
-            }, error: function(result){
-                swal("Failed something went wrong");
-            }
-        });
-    }
-</script>
 @stop

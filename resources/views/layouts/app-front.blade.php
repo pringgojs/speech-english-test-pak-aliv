@@ -15,7 +15,10 @@
     
     {{-- Css --}}
     <link rel="stylesheet" type="text/css" media="screen" href="{{asset('css/app-admintrees.css')}}" />
-    <link rel="stylesheet" type="text/css" media="screen" href="{{asset('css/all-admintrees.css')}}" />
+	<link rel="stylesheet" type="text/css" media="screen" href="{{asset('css/all-admintrees.css')}}" />
+	<style>
+		.navbar.navbar-inverse {background: #ff6028!important}
+	</style>
      @yield('styles')
 </head>
 
@@ -36,7 +39,7 @@
 		
 
         <!-- Main Content -->
-		<div class="page-wrapper">
+		<div class="page-wrapper" @if(\Illuminate\Support\Facades\Request::segment(2) == 'form') style="background: #f1f1f1;" @endif>
             <div class="container">
 				
 				@yield('content')
