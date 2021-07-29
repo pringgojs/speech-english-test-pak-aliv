@@ -46,7 +46,8 @@
 			<footer class="footer container-fluid pl-30 pr-30">
 				<div class="row">
 					<div class="col-sm-12">
-						<p>{{date('Y')}} &copy; {{env('APP_NAME')}} - developed by <a href="https://gramediatech.com">gramediatech.com</a></p>
+						{{-- <p>{{date('Y')}} &copy; {{env('APP_NAME')}} - developed by <a href="https://gramediatech.com">gramediatech.com</a></p> --}}
+						<p>Job Interview Simulation</p>
 					</div>
 				</div>
 			</footer>

@@ -7,9 +7,24 @@ use Illuminate\Database\Eloquent\Model;
 
 class Student extends Model
 {
+    public function scopeJoinGroupStudent($q)
+    {
+        $q->join('group_students', 'group_students.student_id', '=', 'students.id');
+    }
+
+    public function scopeJoinGroupTopic($q)
+    {
+        $q->join('group_topics', 'group_topics.group_id', '=', 'group_students.group_id');
+    }
+    
     public function user()
     {
         return $this->belongsTo(User::class);
+    }
+
+    public function groupStudents()
+    {
+        return $this->hasMany(GroupStudent::class);
     }
 
     public static function store($data = [])

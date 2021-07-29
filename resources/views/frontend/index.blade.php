@@ -77,18 +77,10 @@
 
                 {{-- daftar kuis --}}
                 <div class="col-sm-12 col-xs-12">
-                    <div class="panel panel-default border-panel panel-tabs card-view">
+                    <div class="panel panel-default border-panel card-view">
                         <div class="panel-heading">
                             <div class="pull-left auto-width">
                                 <h6 class="panel-title txt-dark">Daftar Kuis</h6>
-                            </div>
-                            <div class="pull-right auto-width mt-0">
-                                <div class="tab-struct custom-tab-1">
-                                    <ul role="tablist" class="nav nav-tabs" id="myTabs_9">
-                                        <li class="pull-left active" role="presentation"><a aria-expanded="true" data-toggle="tab" role="tab" id="home_tab_9" href="#home_9">Last Month</a></li>
-                                        <li role="presentation" class="pull-left"><a data-toggle="tab" id="profile_tab_9" role="tab" href="#profile_9" aria-expanded="false">All Time</a></li>
-                                    </ul>
-                                </div>	
                             </div>
                             
                             <div class="clearfix"></div>
@@ -103,41 +95,24 @@
                                                 <thead>
                                                   <tr>
                                                     <th>#</th>
-                                                    <th>Topik</th>
+                                                    <th>Topic</th>
                                                     <th>Status</th>
-                                                    <th>Skor</th>
+                                                    <th>Score</th>
                                                   </tr>
                                                 </thead>
                                                 <tbody>
                                                   <tr>
                                                     <td>1</td>
                                                     <td>Milk Powder</td>
-                                                    <td><span class="peity-line" data-width="90" data-peity="{ &quot;fill&quot;: [&quot;transparent&quot;], &quot;stroke&quot;:[&quot;#ff6028&quot;]}" data-height="40" style="display: none;">0,-3,-2,-4,5,-4,3,-2,5,-1</span><svg class="peity" height="40" width="90"><polygon fill="transparent" points="0 22.166666666666668 0 22.166666666666668 10 35.166666666666664 20 30.833333333333336 30 39.5 40 0.5 50 39.5 60 9.166666666666668 70 30.833333333333336 80 0.5 90 26.5 90 22.166666666666668"></polygon><polyline fill="none" points="0 22.166666666666668 10 35.166666666666664 20 30.833333333333336 30 39.5 40 0.5 50 39.5 60 9.166666666666668 70 30.833333333333336 80 0.5 90 26.5" stroke="#ff6028" stroke-width="1" stroke-linecap="square"></polyline></svg> </td>
-                                                    <td><span class="text-danger text-semibold"><i class="fa fa-level-down" aria-hidden="true"></i> 28.76%</span> </td>
+                                                    <td>Done</td>
+                                                    <td>50</td>
                                                   </tr>
+
                                                   <tr>
                                                     <td>2</td>
-                                                    <td>Air Conditioner</td>
-                                                    <td><span class="peity-line" data-width="90" data-peity="{ &quot;fill&quot;: [&quot;transparent&quot;], &quot;stroke&quot;:[&quot;#ff6028&quot;]}" data-height="40" style="display: none;">0,-1,1,-2,-3,1,-2,-3,1,-2</span><svg class="peity" height="40" width="90"><polygon fill="transparent" points="0 10.25 0 10.25 10 20 20 0.5 30 29.75 40 39.5 50 0.5 60 29.75 70 39.5 80 0.5 90 29.75 90 10.25"></polygon><polyline fill="none" points="0 10.25 10 20 20 0.5 30 29.75 40 39.5 50 0.5 60 29.75 70 39.5 80 0.5 90 29.75" stroke="#ff6028" stroke-width="1" stroke-linecap="square"></polyline></svg> </td>
-                                                    <td><span class="text-danger text-semibold"><i class="fa fa-level-down" aria-hidden="true"></i> 8.55%</span> </td>
-                                                  </tr>
-                                                  <tr>
-                                                    <td>3</td>
-                                                    <td>RC Cars</td>
-                                                    <td><span class="peity-line" data-width="90" data-peity="{ &quot;fill&quot;: [&quot;transparent&quot;], &quot;stroke&quot;:[&quot;#ff6028&quot;]}" data-height="40" style="display: none;">0,3,6,1,2,4,6,3,2,1</span><svg class="peity" height="40" width="90"><polygon fill="transparent" points="0 39.5 0 39.5 10 20 20 0.5 30 33 40 26.5 50 13.5 60 0.5 70 20 80 26.5 90 33 90 39.5"></polygon><polyline fill="none" points="0 39.5 10 20 20 0.5 30 33 40 26.5 50 13.5 60 0.5 70 20 80 26.5 90 33" stroke="#ff6028" stroke-width="1" stroke-linecap="square"></polyline></svg> </td>
-                                                    <td><span class="text-success text-semibold"><i class="fa fa-level-up" aria-hidden="true"></i> 58.56%</span> </td>
-                                                  </tr>
-                                                  <tr>
-                                                    <td>4</td>
-                                                    <td>Down Coat</td>
-                                                    <td><span class="peity-line" data-width="90" data-peity="{ &quot;fill&quot;: [&quot;transparent&quot;], &quot;stroke&quot;:[&quot;#ff6028&quot;]}" data-height="40" style="display: none;">0,3,6,4,5,4,7,3,4,2</span><svg class="peity" height="40" width="90"><polygon fill="transparent" points="0 39.5 0 39.5 10 22.78571428571429 20 6.0714285714285765 30 17.214285714285715 40 11.642857142857142 50 17.214285714285715 60 0.5 70 22.78571428571429 80 17.214285714285715 90 28.357142857142858 90 39.5"></polygon><polyline fill="none" points="0 39.5 10 22.78571428571429 20 6.0714285714285765 30 17.214285714285715 40 11.642857142857142 50 17.214285714285715 60 0.5 70 22.78571428571429 80 17.214285714285715 90 28.357142857142858" stroke="#ff6028" stroke-width="1" stroke-linecap="square"></polyline></svg> </td>
-                                                    <td><span class="text-success text-semibold"><i class="fa fa-level-up" aria-hidden="true"></i> 35.76%</span> </td>
-                                                  </tr>
-                                                  <tr>
-                                                    <td>5</td>
-                                                    <td>Xyz Byke</td>
-                                                    <td><span class="peity-line" data-width="90" data-peity="{ &quot;fill&quot;: [&quot;transparent&quot;], &quot;stroke&quot;:[&quot;#ff6028&quot;]}" data-height="40" style="display: none;">0,3,6,4,5,4,7,3,4,2</span><svg class="peity" height="40" width="90"><polygon fill="transparent" points="0 39.5 0 39.5 10 22.78571428571429 20 6.0714285714285765 30 17.214285714285715 40 11.642857142857142 50 17.214285714285715 60 0.5 70 22.78571428571429 80 17.214285714285715 90 28.357142857142858 90 39.5"></polygon><polyline fill="none" points="0 39.5 10 22.78571428571429 20 6.0714285714285765 30 17.214285714285715 40 11.642857142857142 50 17.214285714285715 60 0.5 70 22.78571428571429 80 17.214285714285715 90 28.357142857142858" stroke="#ff6028" stroke-width="1" stroke-linecap="square"></polyline></svg> </td>
-                                                    <td><span class="text-success text-semibold"><i class="fa fa-level-up" aria-hidden="true"></i> 35.76%</span> </td>
+                                                    <td>Milk Powder</td>
+                                                    <td>Done</td>
+                                                    <td>45</td>
                                                   </tr>
                                                 </tbody>
                                               </table>

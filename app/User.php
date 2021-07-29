@@ -2,10 +2,11 @@
 
 namespace App;
 
-use Bican\Roles\Traits\HasRoleAndPermission;
-use Bican\Roles\Contracts\HasRoleAndPermission as HasRoleAndPermissionContract;
+use App\Models\Student;
 use Illuminate\Notifications\Notifiable;
+use Bican\Roles\Traits\HasRoleAndPermission;
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use Bican\Roles\Contracts\HasRoleAndPermission as HasRoleAndPermissionContract;
 
 class User extends Authenticatable implements HasRoleAndPermissionContract
 {
@@ -38,5 +39,10 @@ class User extends Authenticatable implements HasRoleAndPermissionContract
     public function scopeJoinRole($q)
     {
         $q->join('role_user', 'role_user.user_id', '=', 'users.id');
+    }
+
+    public function student()
+    {
+        return $this->hasOne(Student::class, 'user_id');
     }
 }

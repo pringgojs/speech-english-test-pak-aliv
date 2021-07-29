@@ -50,7 +50,8 @@
 				<div class="container">
 					<div class="row">
 						<div class="col-sm-6">
-							<p>{{date('Y')}} &copy; Gramediatech.com - Pringgo Juni S (odyinggo@gmail.com)</p>
+							{{-- <p>{{date('Y')}} &copy; Gramediatech.com - Pringgo Juni S (odyinggo@gmail.com)</p> --}}
+							<p>Job Interview Simulation</p>
 						</div>
 						<div class="col-sm-6 text-right">
 							{{-- <p>Follow Us</p>

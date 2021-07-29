@@ -22,3 +22,11 @@ if (! function_exists('list_kategori')) {
         return Kategori::groupBy('tipe')->get();
     }
 }
+
+if (! function_exists('student')) {
+    function student()
+    {
+        return auth()->user()->student;
+    }
+}
+
