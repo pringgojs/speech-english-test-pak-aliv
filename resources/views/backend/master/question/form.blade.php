@@ -74,8 +74,7 @@
                                                                     <tr>
                                                                         <td><input type="text" name="answers[]" class="form-control" value="{{$item->answer}}" placeholder="...."></td>
                                                                         <td><input type="number" name="scores[]" class="form-control" value="{{$item->score}}" placeholder="...."></td>
-                                                                        <td><a href="javascript:void(0)" class="remove-row"> <button type="button" class="btn btn-info btn-icon-anim btn-square"><i class="icon-trash"></i></button></a><td>
-                                                                        <td></td>
+                                                                        <td><a href="javascript:void(0)" class="remove-row"> <button type="button" class="btn btn-info btn-icon-anim btn-square"><i class="icon-trash"></i></button></a></td>
                                                                     </tr>
                                                                 @endforeach
                                                             @endif
