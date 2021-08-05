@@ -14,26 +14,6 @@
 					<div class="clearfix"></div>
 				</a>
 			</li>
-			<li>
-				<a @if(\Request::segment(1)=='guest' ) class="active" @endif href="{{url('guest')}}" data-toggle="collapse"
-					data-target="#guest">
-					<div class="pull-left"><i class="zmdi zmdi-male-female mr-20"></i><span class="right-nav-text">History Quiz</span></div>
-					<div class="clearfix"></div>
-				</a>
-			</li>
-			<li>
-				<a @if(\Request::segment(1)=='employee' ) class="active" @endif href="javascript:void(0);" data-toggle="collapse"
-					data-target="#employee">
-					<div class="pull-left"><i class="fa fa-slack mr-20"></i><span class="right-nav-text">Report </span></div>
-					<div class="pull-right"><i class="zmdi zmdi-caret-down"></i></div>
-					<div class="clearfix"></div>
-				</a>
-				<ul id="employee" class="collapse @if(\Request::segment(1) == 'employee') in @endif  collapse-level-1">
-					@if(access_is_allowed_to_view('read.employee'))<li><a href="{{url('employee')}}">Pegawai</a></li>@endif
-					@if(access_is_allowed_to_view('read.employee.position'))<li><a href="{{url('employee/position')}}">Jabatan</a></li>@endif
-					@if(access_is_allowed_to_view('read.employee.area'))<li><a href="{{url('employee/area')}}">Bidang</a></li>@endif
-				</ul>
-			</li>
 			{{-- <li class="navigation-header mt-20">
 				<span>master</span>
 				<hr>
@@ -82,7 +62,7 @@
 			</li> --}}
 			<li>
 				<a href="{{url('logout')}}" href="{{url('/logout')}}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
-					<div class="pull-left"><i class="fa fa-lock mr-20"></i><span class="right-nav-text">Keluar </span>
+					<div class="pull-left"><i class="fa fa-lock mr-20"></i><span class="right-nav-text">Logout </span>
 					</div>
 					<div class="clearfix"></div>
 				</a>
