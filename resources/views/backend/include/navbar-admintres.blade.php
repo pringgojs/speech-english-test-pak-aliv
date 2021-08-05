@@ -41,13 +41,13 @@
 				@if(auth()->user())
 				<li class="dropdown auth-drp">
 					<a href="#" class="dropdown-toggle pr-0" data-toggle="dropdown" aria-expanded="true"><img
-							src="{{auth()->user()->photo ? asset(auth()->user()->photo) : asset('dist/img/default-user.png')}}"
+							src="{{auth()->user()->photo ? asset(auth()->user()->photo) : asset('dist/img/user1.png')}}"
 							alt="user_auth" class="user-auth-img img-circle" style="width:50px"><span class="user-online-status"></span></a>
 					<ul class="dropdown-menu user-auth-dropdown" data-dropdown-in="flipInX" data-dropdown-out="flipOutX">
 						<li>
 							<a href="{{url('/logout')}}"
 								onclick="event.preventDefault(); document.getElementById('logout-form').submit();"><i
-									class="zmdi zmdi-power"></i><span>Log Out</span></a>
+									class="zmdi zmdi-power"></i><span>Logout</span></a>
 							<form id="logout-form" action="{{ url('/logout') }}" method="POST" style="display: none;">
 								{{ csrf_field() }}</form>
 						</li>
@@ -56,7 +56,7 @@
 				@else
 				<li>
 					<a href="{{ url('login') }}">
-						<button class="btn btn-warning btn-outline" style="color:#fff">LOGIN</button>
+						<button class="btn btn-warning btn-outline" style="color:#fff">Login</button>
 					</a>
 				</li>
 				@endif
