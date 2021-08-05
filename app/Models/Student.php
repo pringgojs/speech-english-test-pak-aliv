@@ -27,6 +27,11 @@ class Student extends Model
         return $this->hasMany(GroupStudent::class);
     }
 
+    public function topic()
+    {
+        return $this->belongsTo(Topic::class);
+    }
+
     public static function store($data = [])
     {
         $password = str_random(10);

@@ -17,6 +17,7 @@ class VerifyCsrfToken extends BaseVerifier
         'camera',
         'manual-upload',
         'canvas',
-        'group/temp-add-student'
+        'group/temp-add-student',
+        'front/store'
     ];
 }

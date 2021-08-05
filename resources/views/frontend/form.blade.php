@@ -23,8 +23,7 @@
             <div class="panel-wrapper collapse in">
                 <div class="panel-body text-center" style="background: #f1f1f1">
                     <div class="sm-data-box-4 with-icon">
-                        <h6 class="panel-title txt-dark mb-15">Tell me about yourself</h6>
-
+                        <h6 class="panel-title txt-dark mb-15">{{$question->question}}</h6>
                         <ul class="list-icons hidden" id="msg-done">
                             <li class="mb-10"><i class="fa fa-check text-danger mr-5"></i>We have recorded your answer</li>
                         </ul>
@@ -134,6 +133,21 @@ function stopSpeech() {
 
 function submitForm() {
     var note = localStorage.getItem('note');
+    $.ajax({
+        url: '{{url("front/store")}}',
+        type: 'post',
+        data: {
+            token: '{{$token}}',
+            answer: note,
+            question_id: '{{$question->id}}'
+        },
+        success: function (res) {
+            console.log(res);
+        }, error: function (res) {
+            console.log(res);
+            notification('Error', 'Something went wrong');
+        }
+    })
     console.log(note);
 }
  

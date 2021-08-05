@@ -325,3 +325,11 @@ if (! function_exists('next_bill_of_lading')) {
         return NomerBillOfLading::next();
     }
 }
+
+/** generate token */
+if (! function_exists('create_token')) {
+    function enc($group_id, $topic_id, $student_id)
+    {
+        return encrypt($group_id.'.'.$topic_id .'.'. $student_id);
+    }
+}
