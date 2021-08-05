@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Frontend;
 
+use App\Models\Topic;
 use App\Models\Student;
 use App\Helpers\FrontHelper;
 use Illuminate\Http\Request;
@@ -61,6 +62,8 @@ class FrontendController extends Controller
 
         $view = view('frontend.result');
         $view->student_answers = StudentAnswer::where($where)->get();
+        $view->total_score = StudentAnswer::where($where)->sum('score');
+        $view->topic = Topic::find($decrypt[1]);
         return $view;
     }
 }

@@ -16,16 +16,16 @@
 
     <!-- Row -->
     <div class="row">
-        <div class="col-md-8">
+        <div class="col-md-12">
             <div class="row">
                 {{-- daftar kuis --}}
                 <div class="col-sm-12 col-xs-12">
                     <div class="panel panel-default border-panel card-view">
                         <div class="panel-heading">
                             <div class="pull-left auto-width">
-                                <h6 class="panel-title txt-dark">Your Result about "Introduction"</h6>
+                                <h6 class="panel-title txt-dark">Your Result about "{{$topic->name}}"</h6>
                             </div>
-                            <div class="pull-right txt-primary">Total Score: 90</div>
+                            <div class="pull-right txt-primary">Total Score: {{format_quantity($total_score)}}</div>
                             <div class="clearfix"></div>
                         </div>
                         <div class="panel-wrapper collapse in">
@@ -48,7 +48,7 @@
                                                     <td>{{++$i}}</td>
                                                     <td>{{$item->question->question}}</td>
                                                     <td>{{$item->answer}}</td>
-                                                    <td>{{$item->score}}</td>
+                                                    <td>{{format_quantity($item->score)}}</td>
                                                 </tr>    
                                             @endforeach
                                         </tbody>
