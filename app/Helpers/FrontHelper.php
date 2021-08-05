@@ -70,4 +70,15 @@ class FrontHelper
 
         return $score;
     }
+
+    public static function getTotalScore($group_id, $topic_id, $student_id)
+    {
+        $where = [
+            'group_id' => $group_id,
+            'topic_id' => $topic_id,
+            'student_id' => $student_id
+        ];
+
+        return StudentAnswer::where($where)->sum('score');
+    }
 }
