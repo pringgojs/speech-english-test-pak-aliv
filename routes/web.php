@@ -40,7 +40,7 @@ Route::group(['middleware' => 'auth'], function () {
 
 // Student
 Route::group(['namespace' => 'Frontend', 'prefix' => 'front', 'middleware' => ['auth', 'role:student']], function () {
-    Route::get('result', 'FrontendController@result');
+    Route::get('result/{token}', 'FrontendController@result');
     Route::post('store', 'FrontendController@store');
     Route::get('form/{token}', 'FrontendController@form');
     Route::get('/', 'FrontendController@index');

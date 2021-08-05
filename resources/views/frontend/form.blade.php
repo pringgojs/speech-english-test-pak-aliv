@@ -143,6 +143,7 @@ function submitForm() {
         },
         success: function (res) {
             console.log(res);
+            window.location = '{{url("front/form/".$token)}}';
         }, error: function (res) {
             console.log(res);
             notification('Error', 'Something went wrong');

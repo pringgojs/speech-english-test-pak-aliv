@@ -32,8 +32,9 @@ class FrontHelper
             'student_id' => $decrypt[2]
         ];
 
-        $student_answer = StudentAnswer::where($where)->select('question_id')->get()->collapse()->all();
-        $question = Question::where('topic_id', $decrypt[1])->whereNotIn('question_id', $student_answer)->orderBy('serial_number', 'asc')->first();
+        $student_answer = StudentAnswer::where($where)->select('question_id')->get()->toArray();
+        $question_id = array_flatten($student_answer);
+        $question = Question::where('topic_id', $decrypt[1])->whereNotIn('id', $question_id)->orderBy('serial_number', 'asc')->first();
 
         return $question;
     }

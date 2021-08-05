@@ -28,9 +28,10 @@ class FrontendController extends Controller
     {
         /** format token: ($group_id.$topic_id.$student_id) */
         $decrypt = decrypt($token);
-        $is_valid = FrontHelper::isValidForm($decrypt);
+        $is_valid = FrontHelper::nextQuestion($decrypt);
         if (!$is_valid) {
             /** TODO: redirect to result */
+            return redirect('front/result/'.$token);
         }
 
 
@@ -42,15 +43,24 @@ class FrontendController extends Controller
 
     public function store(Request $request)
     {
-        info($request->all());
         $answer = FrontHelper::storeAnswer($request->all());
 
         return $request->all();
     }
 
     
-    public function result()
+    public function result($token)
     {
-        return view('frontend.result');
+        $decrypt = decrypt($token);
+        $decrypt = explode('.', $decrypt);
+        $where = [
+            'group_id' => $decrypt[0],
+            'topic_id' => $decrypt[1],
+            'student_id' => $decrypt[2]
+        ];
+
+        $view = view('frontend.result');
+        $view->student_answers = StudentAnswer::where($where)->get();
+        return $view;
     }
 }

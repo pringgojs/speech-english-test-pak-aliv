@@ -43,24 +43,14 @@
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            <tr>
-                                                <td>1</td>
-                                                <td>Tell me about yourself</td>
-                                                <td>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ad sapiente maxime vitae libero odio commodi, vel, enim omnis, corrupti suscipit qui adipisci repellat consequuntur vero nemo reprehenderit totam voluptas tenetur.</td>
-                                                <td>3</td>
-                                            </tr>
-                                            <tr>
-                                                <td>2</td>
-                                                <td>Tell me about yourself</td>
-                                                <td>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ad sapiente maxime vitae libero odio commodi, vel, enim omnis, corrupti suscipit qui adipisci repellat consequuntur vero nemo reprehenderit totam voluptas tenetur.</td>
-                                                <td>3</td>
-                                            </tr>
-                                            <tr>
-                                                <td>3</td>
-                                                <td>Tell me about yourself</td>
-                                                <td>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ad sapiente maxime vitae libero odio commodi, vel, enim omnis, corrupti suscipit qui adipisci repellat consequuntur vero nemo reprehenderit totam voluptas tenetur.</td>
-                                                <td>3</td>
-                                            </tr>
+                                            @foreach ($student_answers as $i => $item)
+                                                 <tr>
+                                                    <td>{{++$i}}</td>
+                                                    <td>{{$item->question->question}}</td>
+                                                    <td>{{$item->answer}}</td>
+                                                    <td>{{$item->score}}</td>
+                                                </tr>    
+                                            @endforeach
                                         </tbody>
                                         </table>
                                     </div>
