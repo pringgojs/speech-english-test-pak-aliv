@@ -37,7 +37,8 @@
                                 {{-- <div class="product-rating inline-block">
                                     <a href="javascript:void(0);" class="font-12 txt-orange zmdi zmdi-star mr-0"></a><a href="javascript:void(0);" class="font-12 txt-orange zmdi zmdi-star mr-0"></a><a href="javascript:void(0);" class="font-12 txt-orange zmdi zmdi-star mr-0"></a><a href="javascript:void(0);" class="font-12 txt-orange zmdi zmdi-star mr-0"></a><a href="javascript:void(0);" class="font-12 txt-orange zmdi zmdi-star-outline mr-0"></a>
                                 </div> --}}
-                                <span class="head-font block txt-orange-light-1 font-16"><i class="fa fa-check-square-o"></i> {{format_quantity(\App\Helpers\FrontHelper::getTotalScore($topic->group_id, $topic->topic_id, $topic->student_id))}}</span>
+                                <?php $score = \App\Helpers\FrontHelper::getTotalScore($topic->group_id, $topic->topic_id, $topic->student_id));?>
+                                <span class="head-font block txt-orange-light-1 font-16"><i class="fa fa-check-square-o"></i> {{format_quantity($score)}}</span>
                             </div>
                         </article>
                     </div>

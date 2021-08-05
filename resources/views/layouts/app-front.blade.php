@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
 	<meta name="csrf-token" content="{{ csrf_token() }}">
-	<title>SPECH TEST</title>
+	<title>SPEECH RECOGNITION</title>
 	<meta name="description" content="Simple aplikasi buku tamu. Aplikasi ini dibuat oleh Pringgo Juni Saputro - odyinggo@gmail.com 2019 (www.gramediatech.com);" />
 	<meta name="keywords" content="Aplikasi buku tamu, pringgo juni saputro," />
 	<meta name="author" content="Pringgo Juni Saputro | odyinggo@gmail.com (www.gramediatech.com)"/>
