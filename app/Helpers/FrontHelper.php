@@ -63,7 +63,7 @@ class FrontHelper
         $question = Question::find($question_id);
         $score = 0;
         foreach ($question->answers as $question_answer) {
-            if (strpos(strtolower($answer), strtolower($question_answer->answer))) {
+            if (strpos(strtolower($answer), strtolower($question_answer->answer))  !== false) {
                 $score += $question_answer->score;
             }
         }
