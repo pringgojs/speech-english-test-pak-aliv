@@ -10,8 +10,8 @@
 	<meta name="author" content="Pringgo Juni Saputro | odyinggo@gmail.com (www.gramediatech.com)"/>
 	
 	<!-- Favicon -->
-	<link rel="shortcut icon" href="favicon.ico">
-	<link rel="icon" href="favicon.ico" type="image/x-icon">
+	<link rel="shortcut icon" href="{{asset(setting('favicon'))}}">
+	<link rel="icon" href="{{asset(setting('favicon'))}}" type="image/x-icon">
     
     {{-- Css --}}
     <link rel="stylesheet" type="text/css" media="screen" href="{{asset('css/app-admintrees.css')}}" />
