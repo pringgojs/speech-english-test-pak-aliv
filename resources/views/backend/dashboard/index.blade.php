@@ -2,7 +2,7 @@
 @section('content')
 <!-- Title -->
     @include('backend._bread-crumb', [
-        'title' => 'Buat Pelaksanan Pelayanan Baru',
+        'title' => 'Dashboard',
         'breadcrumbs' => [
             0 => [
                 'link' => url('/'),

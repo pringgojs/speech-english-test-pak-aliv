@@ -19,7 +19,7 @@
 @section('content')
     <!-- Title -->
     @include('backend._bread-crumb', [
-        'title' => 'Pengaturan',
+        'title' => 'Setting',
         'breadcrumbs' => [
             0 => [
                 'link' => url('dashboard'),
@@ -27,7 +27,7 @@
             ],
             1 => [
                 'link' => url('setting'),
-                'label' => 'Pengaturan'
+                'label' => 'Setting'
             ]
         ]
     ])
@@ -47,11 +47,11 @@
                                     <thead>
                                         <tr>
                                             <th>No</th>
-                                            <th>Nama</th>
-                                            <th>Deskripsi</th>
-                                            <th>Isi</th>
-                                            <th>Tipe</th>
-                                            <th>Aksi</th>
+                                            <th>Name</th>
+                                            <th>Desc</th>
+                                            <th>Content</th>
+                                            <th>Type</th>
+                                            <th>Action</th>
                                         </tr>
                                     </thead>
                                     <tbody>

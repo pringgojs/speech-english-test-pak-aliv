@@ -3,7 +3,7 @@
 @section('content')
     <!-- Title -->
     @include('backend._bread-crumb', [
-        'title' => 'Pengguna',
+        'title' => 'User',
         'breadcrumbs' => [
             0 => [
                 'link' => url('dashboard'),
@@ -11,7 +11,7 @@
             ],
             1 => [
                 'link' => url('user'),
-                'label' => 'Pengguna'
+                'label' => 'User'
             ]
         ]
     ])

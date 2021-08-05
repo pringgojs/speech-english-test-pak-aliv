@@ -8,7 +8,7 @@
 				
 				@role('administrator')
 				<li>
-					<a @if(\Request::segment(1) == '') class="active" @endif  href="{{url('/')}}"><div class="pull-left"><i class="zmdi zmdi-landscape mr-20"></i><span class="right-nav-text">Beranda</span></div><div class="clearfix"></div></a>
+					<a @if(\Request::segment(1) == '') class="active" @endif  href="{{url('/')}}"><div class="pull-left"><i class="zmdi zmdi-landscape mr-20"></i><span class="right-nav-text">Dashboard</span></div><div class="clearfix"></div></a>
 				</li>
 				
 				{{-- @if(access_is_allowed_to_view('menu.ownuse')) --}}
@@ -17,7 +17,7 @@
 					<ul id="menu-student" class="collapse @if(\Request::segment(1) == 'student') in @endif  collapse-level-1">
 						{{-- @if(access_is_allowed_to_view('create.student')) --}}
 						<li>
-							<a href="{{url('student/create')}}">Buat Baru</a>
+							<a href="{{url('student/create')}}">Create New</a>
 						</li>
 						{{-- @if(access_is_allowed_to_view('read.student'))
 						@endif --}}
@@ -34,7 +34,7 @@
 					<ul id="menu-group" class="collapse @if(\Request::segment(1) == 'group') in @endif  collapse-level-1">
 						{{-- @if(access_is_allowed_to_view('create.bunker.umum')) --}}
 						<li>
-							<a href="{{url('group/create')}}">Buat Baru</a>
+							<a href="{{url('group/create')}}">Create New</a>
 						</li>
 						{{-- @endif
 						@if(access_is_allowed_to_view('read.bunker.umum')) --}}
@@ -63,12 +63,12 @@
 				</li>
 				@if(access_is_allowed_to_view('read.user'))
 					<li>
-						<a @if(\Request::segment(1) == 'user') class="active" @endif href="{{url('user')}}"><div class="pull-left"><i class="fa fa-user  mr-20"></i><span class="right-nav-text">Pengguna </span></div><div class="clearfix"></div></a>
+						<a @if(\Request::segment(1) == 'user') class="active" @endif href="{{url('user')}}"><div class="pull-left"><i class="fa fa-user  mr-20"></i><span class="right-nav-text">User </span></div><div class="clearfix"></div></a>
 					</li>
 				@endif
 				@if(access_is_allowed_to_view('read.setting'))<li>
 				<li>
-					<a @if(\Request::segment(1) == 'setting') class="active" @endif href="{{url('setting')}}"><div class="pull-left"><i class="fa fa-cog  mr-20"></i><span class="right-nav-text">Pengaturan </span></div><div class="clearfix"></div></a>
+					<a @if(\Request::segment(1) == 'setting') class="active" @endif href="{{url('setting')}}"><div class="pull-left"><i class="fa fa-cog  mr-20"></i><span class="right-nav-text">Setting </span></div><div class="clearfix"></div></a>
 				</li>
 				@endif
 			@endrole

@@ -3,7 +3,7 @@
 @section('content')
     <!-- Title -->
     @include('backend._bread-crumb', [
-        'title' => 'Pengguna',
+        'title' => 'User',
         'breadcrumbs' => [
             0 => [
                 'link' => url('dashboard'),
@@ -11,7 +11,7 @@
             ],
             1 => [
                 'link' => '#',
-                'label' => 'Ubah Pengguna'
+                'label' => 'Update User'
             ],
         ]
     ])
@@ -43,7 +43,7 @@
                                     <input type="password" class="form-control" value="" name="password">
                                 </div>
                                 <div class="form-group">
-                                    <label class="control-label mb-10">{!! label('Foto', 'Images') !!}</label>
+                                    <label class="control-label mb-10">{!! label('Photo', 'Images') !!}</label>
                                     <input type="file" name="file" id="file">
                                 </div>
                                 <div class="form-group mb-0">
