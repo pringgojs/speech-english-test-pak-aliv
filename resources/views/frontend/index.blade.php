@@ -28,9 +28,9 @@
                                     <a href="javascript:void(0);" class="font-18 txt-grey pull-left sa-warning"><i class="zmdi zmdi-close"></i></a>
                                 </div> --}}
                                 @php
-                                // $token = create_token($topic->group_id, $topic->topic_id, $topic->student_id);    
+                                $token = encrypt($topic->group_id.'.'.$topic->topic_id .'.'. $topic->student_id);    
                                 @endphp
-                                <a href="{{url('front/form/'.encrypt($topic->group_id.'.'.$topic->topic_id .'.'. $topic->student_id))}}"> <img src="{{asset('microphone.png')}}" class="img-responsive" alt="Product Image"> </a>
+                                <a href="{{url('front/form/'.$token)}}"> <img src="{{asset('microphone.png')}}" class="img-responsive" alt="Product Image"> </a>
                             </div>
                             <div class="info">
                                 <h6>{{$topic->topic->name}}</h6>
@@ -38,7 +38,11 @@
                                     <a href="javascript:void(0);" class="font-12 txt-orange zmdi zmdi-star mr-0"></a><a href="javascript:void(0);" class="font-12 txt-orange zmdi zmdi-star mr-0"></a><a href="javascript:void(0);" class="font-12 txt-orange zmdi zmdi-star mr-0"></a><a href="javascript:void(0);" class="font-12 txt-orange zmdi zmdi-star mr-0"></a><a href="javascript:void(0);" class="font-12 txt-orange zmdi zmdi-star-outline mr-0"></a>
                                 </div> --}}
                                 <?php $score = \App\Helpers\FrontHelper::getTotalScore($topic->group_id, $topic->topic_id, $topic->student_id);?>
+                                @if (\App\Helpers\FrontHelper::isDone($token))
                                 <span class="head-font block txt-orange-light-1 font-16"><i class="fa fa-check-square-o"></i> {{format_quantity($score)}}</span>
+                                @else
+                                <span class="head-font block txt-orange-light-1 font-16">not done</span>
+                                @endif
                             </div>
                         </article>
                     </div>

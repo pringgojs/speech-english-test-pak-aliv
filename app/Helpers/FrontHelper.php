@@ -38,6 +38,13 @@ class FrontHelper
 
         return $question;
     }
+
+    public static function isDone($token)
+    {
+        $decrypt = decrypt($token);
+
+        return self::nextQuestion($decrypt) ? false: true;
+    }
     
     public static function storeAnswer($request)
     {
