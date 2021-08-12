@@ -53,6 +53,8 @@ Route::group(['namespace' => 'Backend', 'middleware' => ['auth', 'role:administr
     
     // Master
     Route::group(['prefix' => 'master', 'namespace' => 'Master'], function () {
+        Route::post('question/create-step-2', 'QuestionController@storeStep2');
+        Route::get('question/create-step-2/{id}', 'QuestionController@createStep2');
         Route::resource('question', 'QuestionController');
         Route::resource('topic', 'TopicController');
         Route::resource('kategori', 'KategoriController');

@@ -91,6 +91,8 @@ class AdminHelper
             $answer->score = $scores[$i];
             self::save($answer);
         }
+
+        return $model;
     }
 
     /** Student */

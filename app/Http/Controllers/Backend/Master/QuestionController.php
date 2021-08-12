@@ -34,10 +34,19 @@ class QuestionController extends Controller
     {
         access_is_allowed('create.master.question');
 
-        AdminHelper::createQuestion($request);
+        $model = AdminHelper::createQuestion($request);
         toaster_success(Constants::$SAVE_SUCCESS_MESSAGE);
-        return redirect('master/question');
+        return redirect('master/question/create-step-2/'.$model->id);
     }
+
+    public function createStep2($id)
+    {
+        $view = view('backend.master.question.create-step-2');
+        $view->question = Question::findOrFail($id);
+
+        return $view;
+    }
+
 
     public function edit($id)
     {

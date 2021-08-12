@@ -27,6 +27,8 @@
             <div class="panel panel-default card-view">
                 <div class="panel-wrapper collapse in">
                     <div class="panel-body">
+                        @include('backend.master.question._wizard', ['from' => 'step-1'])
+                        <br><br>
                         <div class="form-wrap">
                             <form method="post" action="{{url('master/question')}}">
                                 {!! csrf_field() !!}
@@ -51,50 +53,46 @@
 
                                 {{-- Option answer --}}
                                 <div class="seprator-block"></div>
-                                <h6 class="txt-dark capitalize-font"><i class="fa fa-check mr-10"></i>Option Answer</h6>
+                                <h6 class="txt-dark capitalize-font"><i class="fa fa-check mr-10"></i>Answer Category</h6>
                                 <hr class="light-grey-hr">
 
                                 {{-- Default answer --}}
                                 <div class="row">
                                     <div class="col-lg-12">
-                                        <div class="modal-body">
-                                            <div class="row">
-                                                <div class="col-md-12 ">
-                                                    <table id="document" class="table table-responsive table-border" cellspacing="0" width="100%">
-                                                        <thead>
+                                        <div class="table-responsive">
+                                            <table id="document" class="table table-responsive table-border" cellspacing="0" width="100%">
+                                                <thead>
+                                                    <tr>
+                                                        <th>Answer Category</th>
+                                                        <th>Score</th>
+                                                        <th style="width:5%"></th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    @if ($question->answers)
+                                                        @foreach ($question->answers as $item)
                                                             <tr>
-                                                                <th>Answer</th>
-                                                                <th>Score</th>
-                                                                <th style="width:5%"></th>
+                                                                <td><input type="text" name="answers[]" class="form-control" value="{{$item->answer}}" placeholder="...."></td>
+                                                                <td><input type="number" name="scores[]" class="form-control" value="{{$item->score}}" placeholder="...."></td>
+                                                                <td><a href="javascript:void(0)" class="remove-row"> <button type="button" class="btn btn-info btn-icon-anim btn-square"><i class="icon-trash"></i></button></a></td>
                                                             </tr>
-                                                        </thead>
-                                                        <tbody>
-                                                            @if ($question->answers)
-                                                                @foreach ($question->answers as $item)
-                                                                    <tr>
-                                                                        <td><input type="text" name="answers[]" class="form-control" value="{{$item->answer}}" placeholder="...."></td>
-                                                                        <td><input type="number" name="scores[]" class="form-control" value="{{$item->score}}" placeholder="...."></td>
-                                                                        <td><a href="javascript:void(0)" class="remove-row"> <button type="button" class="btn btn-info btn-icon-anim btn-square"><i class="icon-trash"></i></button></a></td>
-                                                                    </tr>
-                                                                @endforeach
-                                                            @endif
-                                                        </tbody>
-                                                    </table>
-                                                    <table class="table table-responsive table-border" cellspacing="0" width="100%">
-                                                        <tfoot>
-                                                            <tr>
-                                                                <td class="text-right pull-right" colspan="3">
-                                                                    <div class="btn btn-sm btn-primary btn-lable-wrap left-label" onclick="addRow()"
-                                                                        id="addRow">
-                                                                        <span class="btn-label"><i class="fa fa-plus"></i> </span>
-                                                                        <span class="btn-text">Add Column</span>
-                                                                    </div>
-                                                                </td>
-                                                            </tr>
-                                                        </tfoot>
-                                                    </table>
-                                                </div>
-                                            </div>
+                                                        @endforeach
+                                                    @endif
+                                                </tbody>
+                                            </table>
+                                            <table class="table table-responsive table-border" cellspacing="0" width="100%">
+                                                <tfoot>
+                                                    <tr>
+                                                        <td class="text-right pull-right" colspan="3">
+                                                            <div class="btn btn-sm btn-primary btn-lable-wrap left-label" onclick="addRow()"
+                                                                id="addRow">
+                                                                <span class="btn-label"><i class="fa fa-plus"></i> </span>
+                                                                <span class="btn-text">Add Column</span>
+                                                            </div>
+                                                        </td>
+                                                    </tr>
+                                                </tfoot>
+                                            </table>
                                         </div>
                                     </div>
                                 </div>
@@ -106,7 +104,7 @@
                                 @endif --}}
                                 
                                 <div class="form-group mb-0">
-                                    <button type="submit" class="btn btn-success btn-anim"><i class="icon-rocket"></i><span class="btn-text">submit</span></button>
+                                    <button type="submit" class="btn btn-success btn-anim"><i class="icon-rocket"></i><span class="btn-text">submit and next step</span></button>
                                 </div>
                             </form>
                         </div>
