@@ -41,6 +41,7 @@
                                     <thead>
                                         <tr>
                                             <th>No</th>
+                                            <th>Cover</th>
                                             <th>Name</th>
                                             <th>Created At</th>
                                             <th>#</th>
@@ -50,6 +51,12 @@
                                         @foreach($topics as $row => $topic)
                                         <tr id="tr-{{$topic->id}}">
                                             <td>{{$row + 1}}</td>
+                                            <td>@if ($topic->image)
+                                                    <img src="{{asset($topic->image)}}" width="100px" height="auto" alt="">
+                                                @else
+                                                    -
+                                                @endif
+                                            </td>
                                             <td>{{$topic->name}}</td>
                                             <td>{{date_format_view($topic->created_at)}}</td>
                                             <td>

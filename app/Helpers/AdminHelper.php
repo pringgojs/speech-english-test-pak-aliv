@@ -63,8 +63,12 @@ class AdminHelper
     /** Topic */
     public static function createTopic($request)
     {
+        $file = $request->file('file');
         $model = $request->id ? Topic::findOrFail($request->id) : new Topic;
         $model->name = $request->input('name');
+        if ($file) {
+            $model->image = FileHelper::upload($file, 'uploads/topic/');
+        }
         return self::save($model);
     }
 

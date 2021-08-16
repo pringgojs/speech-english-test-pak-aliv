@@ -28,7 +28,7 @@
                 <div class="panel-wrapper collapse in">
                     <div class="panel-body">
                         <div class="form-wrap">
-                            <form method="post" action="{{url('master/topic')}}">
+                            <form method="post" action="{{url('master/topic')}}" enctype="multipart/form-data">
                                 {!! csrf_field() !!}
                                 <input type="hidden" name="id" value="{{$topic->id}}">
                                 <div class="form-group">
@@ -36,6 +36,13 @@
                                     <input type="text" name="name" value="{{$topic->name}}" class="form-control" placeholder="" required>
                                 </div>
                                 
+                                <div class="form-group ">
+                                    <label class="control-label mb-10">Cover (optional)</label>
+                                    <input type='file' name="file" accept="png,jpeg,jpg" id="file" class="form-control" />
+                                    @if ($topic->image)
+                                        <img src="{{asset($topic->image)}}" width="150px" height="auto" alt="">
+                                    @endif
+                                </div>
                                 <div class="form-group mb-0">
                                     <button type="submit" class="btn btn-success btn-anim"><i class="icon-rocket"></i><span class="btn-text">submit</span></button>
                                 </div>
