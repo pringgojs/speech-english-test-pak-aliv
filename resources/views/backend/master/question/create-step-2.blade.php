@@ -56,7 +56,15 @@
                                 </div>
                                 <div id="collapse_{{$question_answer->id}}" class="panel-collapse collapse" role="tabpanel" aria-expanded="false" style="height: 0px;">
                                     <div class="panel-body pa-15"> 
-                                        <input type="text" class="form-control" id="input-{{$question_answer->id}}" placeholder="Answer variations">
+                                        <input type="text" class="form-control" onkeydown="addItem(this, {{$question_answer->id}})" question-answer-id="{{$question_answer->id}}" id="input-{{$question_answer->id}}" placeholder="Answer variations">
+                                        <ul class="list-group mt-10 list-group-{{$question_answer->id}}">
+                                            @foreach ($question_answer->variants as $variant)
+                                            @php
+                                            $url_delete = url('master/question/delete-answer-variant/'.$variant->id);    
+                                            @endphp
+                                            <li class="list-group-item list-group-item-{{$variant->id}}"> <span class="badge" onclick="secureDelete('{{$url_delete}}', '.list-group-item-{{$variant->id}}')"><i class="fa fa-close text-danger"></i></span> {{$variant->answer}}</li>
+                                            @endforeach
+                                          </ul>
                                     </div>
                                 </div>
                             </div>
@@ -76,28 +84,28 @@
     </script>
 
 <script>
-    /* Add document */
-    var tb_document = $('#document').DataTable({
-        bSort: false,
-        bPaginate: false,
-        bInfo: false,
-        bFilter: false,
-        bScrollCollapse: false
-    });
-    counter = 0;
-    function addRow() {
-        tb_document.row.add( [
-            `<input type="text" name="answers[]" class="form-control" value="" placeholder="....">`,
-            `<input type="number" name="scores[]" class="form-control" value="1" placeholder="....">`,
-            `<a href="javascript:void(0)" class="remove-row"> <button type="button" class="btn btn-info btn-icon-anim btn-square"><i class="icon-trash"></i></button></a>`,
-        ] ).draw( false );
-        $('select').select2();
-        counter++;
+    function addItem(elm, question_answer_id) {
+        if(event.key === 'Enter') {
+            var val = $('#input-'+question_answer_id).val();
+            store(question_answer_id, val);
+        }
     }
-    
-    $('#document tbody').on('click', '.remove-row', function () {
-        tb_document.row($(this).parents('tr')).remove().draw();
-    });
 
+    function store(question_answer_id, val) {
+        $.ajax({
+            url: '{{url("master/question/create-step-2")}}',
+            method: 'post',
+            data: {question_answer_id: question_answer_id, value: val},
+            success: function (res) {
+                var url_delete = "{{url('master/question/delete-answer-variant')}}/"+res.id;
+                var html = `<li class="list-group-item list-group-item-`+res.id+`"> <span class="badge" onclick="secureDelete('`+url_delete+`', '.list-group-item-`+res.id+`')"><i class="fa fa-close text-danger"></i></span> `+res.answer+`</li>`;
+                $('.list-group-'+res.question_answer_id).append(html);
+                notification('Success', 'Item added');
+                $('#input-'+question_answer_id).val("");
+            }, error: function (res) {
+                notification('Error', 'Error');
+            }
+        })
+    }
 </script>
 @endsection

@@ -8,6 +8,7 @@ use App\Models\Question;
 use App\Helpers\AdminHelper;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Models\QuestionAnswerVariant;
 
 class QuestionController extends Controller
 {
@@ -47,6 +48,23 @@ class QuestionController extends Controller
         return $view;
     }
 
+    public function storeStep2(Request $request)
+    {
+        $model = new QuestionAnswerVariant;
+        $model->question_answer_id = $request->question_answer_id;
+        $model->answer = $request->value;
+        $model->save();
+
+        return $model;
+    }
+
+    public function _deleteAnswerVariant($id)
+    {
+        $model = QuestionAnswerVariant::findOrFail($id);
+        $model->delete();
+
+        return 'success';
+    }
 
     public function edit($id)
     {

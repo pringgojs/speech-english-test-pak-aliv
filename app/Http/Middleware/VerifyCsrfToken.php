@@ -18,6 +18,7 @@ class VerifyCsrfToken extends BaseVerifier
         'manual-upload',
         'canvas',
         'group/temp-add-student',
-        'front/store'
+        'front/store',
+        'master/question/create-step-2'
     ];
 }
