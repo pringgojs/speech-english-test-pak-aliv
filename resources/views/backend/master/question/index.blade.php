@@ -56,8 +56,9 @@
                                             <td>{{$question->topic->name}}</td>
                                             <td>{{date_format_view($question->created_at)}}</td>
                                             <td>
-                                                <a href="#" onclick="dataQuestion({{$question}})" data-original-title="Detail" data-toggle="modal" data-target="#myModal">
-                                                    <button class="btn btn-warning btn-icon-anim btn-square btn-sm"><i class="fa fa-ellipsis-v"></i></button>
+                                                <a onclick="showDetail('{{url("master/question/".$question->id."/detail")}}')" data-toggle="modal" data-target=".detail-modal"
+                                                    data-toggle="tooltip" data-toggle="tooltip" data-original-title="Detail">
+                                                    <button class="btn btn-dropbox btn-icon-anim btn-square btn-sm"><i class="fa fa-ellipsis-v"></i></button>
                                                 </a>
                                                 @if(access_is_allowed_to_view('update.master.question'))
                                                 <a href="{{url('master/question/'.$question->id.'/edit')}}" data-toggle="tooltip" data-original-title="Edit">
@@ -88,49 +89,7 @@
         </div>
     </div>
     <!-- /Row -->
-
-    <!-- Modal -->
-    <div class="modal fade" id="myModal" role="dialog">
-        <div class="modal-dialog modal-lg">
-            <!-- Modal content-->
-            <div class="modal-content">
-                <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal">&times;</button>
-                    <h4 class="modal-title" id="text-question"></h4>
-                    <span class="label label-primary" id="text-topic"></span>
-                </div>
-                <div class="modal-body">
-                    <table class="table">
-                        <thead>
-                            <tr>
-                                <th>Answer item</th>
-                                <th>Score</th>
-                            </tr>
-                        </thead>
-                        <tbody class="table-answer"></tbody>
-                    </table>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                </div>
-            </div>
-        </div>
-    </div>
 @stop
 
 @section('scripts')
-<script>
-    // initDatatable('#datatable');
-    function dataQuestion(data) {
-        $('.table-answer').html('');
-        $('#text-question').html(data.question);
-        $('#text-topic').html(data.topic.name);
-        data.answers.forEach(renderAnswer);
-    }
-
-    function renderAnswer(item, index) {
-        var html = `<tr><td>`+item.answer+`</td> <td>`+item.score+`</td></tr>`;
-        $('.table-answer').append(html);
-    }
-</script>
 @stop

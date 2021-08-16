@@ -66,6 +66,13 @@ class QuestionController extends Controller
         return 'success';
     }
 
+    public function show($id)
+    {
+        $view = view('backend.master.question._show');
+        $view->question = Question::findOrFail($id);
+        return $view;
+    }
+
     public function edit($id)
     {
         access_is_allowed('update.master.question');

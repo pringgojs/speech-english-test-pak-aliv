@@ -44,9 +44,13 @@
                     <div class="pull-left">
                         <h6 class="panel-title txt-dark">{{$question->question}}</h6>
                     </div>
+                    <div class="pull-right">
+                        <a href="{{url('master/question')}}" class="btn btn-sm btn-warning">Close</a>
+                    </div>
                     <div class="clearfix"></div>
                 </div>
-                <div class="panel-wrapper collapse in">
+
+                {{-- <div class="panel-wrapper collapse in">
                     <div class="panel-body">
                         <div class="panel-group accordion-struct accordion-style-1" id="accordion_2" role="tablist" aria-multiselectable="true">
                             @foreach ($question->answers as $question_answer)
@@ -71,7 +75,9 @@
                             @endforeach
                         </div>
                     </div>
-                </div>
+                </div> --}}
+
+                @include('backend.master.question._answer-variant')
             </div>
         </div>
     </div>
@@ -83,29 +89,4 @@
 	
     </script>
 
-<script>
-    function addItem(elm, question_answer_id) {
-        if(event.key === 'Enter') {
-            var val = $('#input-'+question_answer_id).val();
-            store(question_answer_id, val);
-        }
-    }
-
-    function store(question_answer_id, val) {
-        $.ajax({
-            url: '{{url("master/question/create-step-2")}}',
-            method: 'post',
-            data: {question_answer_id: question_answer_id, value: val},
-            success: function (res) {
-                var url_delete = "{{url('master/question/delete-answer-variant')}}/"+res.id;
-                var html = `<li class="list-group-item list-group-item-`+res.id+`"> <span class="badge" onclick="secureDelete('`+url_delete+`', '.list-group-item-`+res.id+`')"><i class="fa fa-close text-danger"></i></span> `+res.answer+`</li>`;
-                $('.list-group-'+res.question_answer_id).append(html);
-                notification('Success', 'Item added');
-                $('#input-'+question_answer_id).val("");
-            }, error: function (res) {
-                notification('Error', 'Error');
-            }
-        })
-    }
-</script>
 @endsection

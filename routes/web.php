@@ -56,6 +56,7 @@ Route::group(['namespace' => 'Backend', 'middleware' => ['auth', 'role:administr
         Route::delete('question/delete-answer-variant/{id}', 'QuestionController@_deleteAnswerVariant');
         Route::post('question/create-step-2', 'QuestionController@storeStep2');
         Route::get('question/create-step-2/{id}', 'QuestionController@createStep2');
+        Route::get('question/{id}/detail', 'QuestionController@show');
         Route::resource('question', 'QuestionController');
         Route::resource('topic', 'TopicController');
         Route::resource('kategori', 'KategoriController');
