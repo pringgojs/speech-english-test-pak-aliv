@@ -30,7 +30,7 @@
                         @include('backend.master.question._wizard', ['from' => 'step-1'])
                         <br><br>
                         <div class="form-wrap">
-                            <form method="post" action="{{url('master/question')}}">
+                            <form method="post" action="{{url('master/question')}}" enctype="multipart/form-data">
                                 {!! csrf_field() !!}
                                 <input type="hidden" name="id" value="{{$question->id}}">
                                 <div class="form-group">
@@ -49,6 +49,15 @@
                                 <div class="form-group">
                                     <label class="control-label mb-10 text-left">Serial number*</label>
                                     <input type="number" name="serial_number" value="{{$question->serial_number}}" class="form-control" placeholder="" required>
+                                </div>
+
+
+                                <div class="form-group ">
+                                    <label class="control-label mb-10">Image (optional)</label>
+                                    <input type='file' name="file" id="file" class="form-control" />
+                                    @if ($question->image)
+                                        <img src="{{asset($question->image)}}" width="150px" height="auto" alt="">
+                                    @endif
                                 </div>
 
                                 {{-- Option answer --}}
@@ -97,11 +106,6 @@
                                     </div>
                                 </div>
 
-                                {{-- @if (!$question->id)
-                                @for ($i = 0; $i < 4; $i++)
-                                <input type="text" name="answer[]" value="" class="form-control" placeholder="write down the answer choices"> <br>
-                                @endfor
-                                @endif --}}
                                 
                                 <div class="form-group mb-0">
                                     <button type="submit" class="btn btn-success btn-anim"><i class="icon-rocket"></i><span class="btn-text">submit and next step</span></button>

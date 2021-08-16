@@ -71,10 +71,14 @@ class AdminHelper
     /** Question */
     public static function createQuestion($request)
     {
+        $file = $request->file('file');
         $model = $request->id ? Question::findOrFail($request->id) : new Question;
         $model->question = $request->question;
         $model->topic_id = $request->topic_id;
         $model->serial_number = $request->serial_number;
+        if ($file) {
+            $model->image = FileHelper::upload($file, 'uploads/question/');
+        }
         self::save($model);
 
         /** drop answer exist */
