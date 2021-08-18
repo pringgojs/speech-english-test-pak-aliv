@@ -7,6 +7,7 @@ use App\Models\Topic;
 use App\Models\Question;
 use App\Helpers\AdminHelper;
 use Illuminate\Http\Request;
+use App\Models\QuestionAnswer;
 use App\Http\Controllers\Controller;
 use App\Models\QuestionAnswerVariant;
 
@@ -66,6 +67,14 @@ class QuestionController extends Controller
         return 'success';
     }
 
+    public function _deleteAnswerCategory($id)
+    {
+        $model = QuestionAnswer::findOrFail($id);
+        $model->delete();
+
+        return 'success';
+    }
+
     public function show($id)
     {
         $view = view('backend.master.question._show');
@@ -102,5 +111,12 @@ class QuestionController extends Controller
         
         toaster_success(Constants::$DELETE_SUCCESS_MESSAGE);
         return redirect('master/question');
+    }
+
+    public function storeAnswerCategory(Request $request)
+    {
+        AdminHelper::createAnswerCategory($request);
+        toaster_success(Constants::$SAVE_SUCCESS_MESSAGE);
+        return redirect()->back();
     }
 }

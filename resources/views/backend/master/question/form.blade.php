@@ -59,12 +59,14 @@
                                         <img src="{{asset($question->image)}}" width="150px" height="auto" alt="">
                                     @endif
                                 </div>
+                                @if (!$question->id)
 
                                 {{-- Option answer --}}
                                 <div class="seprator-block"></div>
                                 <h6 class="txt-dark capitalize-font"><i class="fa fa-check mr-10"></i>Answer Category</h6>
                                 <hr class="light-grey-hr">
 
+                                    
                                 {{-- Default answer --}}
                                 <div class="row">
                                     <div class="col-lg-12">
@@ -106,6 +108,7 @@
                                     </div>
                                 </div>
 
+                                @endif
                                 
                                 <div class="form-group mb-0">
                                     <button type="submit" class="btn btn-success btn-anim"><i class="icon-rocket"></i><span class="btn-text">submit and next step</span></button>

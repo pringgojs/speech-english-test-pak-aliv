@@ -2,9 +2,19 @@
     <div class="panel-body">
         <div class="panel-group accordion-struct accordion-style-1" id="accordion_2" role="tablist" aria-multiselectable="true">
             @foreach ($question->answers as $question_answer)
-            <div class="panel panel-default">
+            <div class="panel panel-default answer-category-{{$question_answer->id}}">
                 <div class="panel-heading" role="tab" id="heading_{{$question_answer->id}}">
-                    <a role="button" data-toggle="collapse" data-parent="#accordion_2" href="#collapse_{{$question_answer->id}}" aria-expanded="false" class="collapsed"><div class="icon-ac-wrap pr-20"><span class="plus-ac"><i class="fa  fa-angle-double-down"></i></span><span class="minus-ac"><i class="fa  fa-angle-double-right"></i></span></div>{{$question_answer->answer}}</a> 
+                    <a role="button" data-toggle="collapse" data-parent="#accordion_2" href="#collapse_{{$question_answer->id}}" aria-expanded="false" class="collapsed">
+                        <div class="icon-ac-wrap pr-20">
+                            <span class="plus-ac"><i class="fa  fa-angle-double-down"></i></span>
+                            <span class="minus-ac"><i class="fa  fa-angle-double-right"></i></span>
+                        </div>
+                        {{$question_answer->answer}}
+                        @php
+                        $url_delete = url('master/question/delete-answer-category/'.$question_answer->id);    
+                        @endphp
+                        <button class="pull-right" onclick="secureDelete('{{$url_delete}}', '.answer-category-{{$question_answer->id}}')"><i class="fa fa-trash text-danger"></i></button> 
+                    </a> 
                 </div>
                 <div id="collapse_{{$question_answer->id}}" class="panel-collapse collapse" role="tabpanel" aria-expanded="false" style="height: 0px;">
                     <div class="panel-body pa-15"> 

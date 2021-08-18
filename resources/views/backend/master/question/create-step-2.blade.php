@@ -35,7 +35,41 @@
             </div>	
         </div>
     </div>
+
     <!-- /Row -->
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="panel panel-default card-view">
+                <div class="panel-heading">
+                    <div class="pull-left">
+                        <h6 class="panel-title txt-dark">Form Answer Category</h6>
+                    </div>
+                    <div class="clearfix"></div>
+                </div>
+                <div class="panel-wrapper collapse in">
+                    <div class="panel-body">
+                        <div class="form-wrap">
+                            <form method="post" action="{{url('master/question/answer-category')}}" enctype="multipart/form-data">
+                                {!! csrf_field() !!}
+                                <input type="hidden" name="question_id" value="{{$question->id}}">
+                                <div class="form-group">
+                                    <label class="control-label mb-10 text-left">Name*</label>
+                                    <input type="text" name="name" value="" class="form-control" placeholder="" required>
+                                </div>
+                                <div class="form-group">
+                                    <label class="control-label mb-10 text-left">Score*</label>
+                                    <input type="number" name="score" value="" class="form-control" placeholder="" required>
+                                </div>
+                                <div class="form-group mb-0">
+                                    <button type="submit" class="btn btn-primary btn-anim"><i class="icon-rocket"></i><span class="btn-text">submit</span></button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>	
+        </div>
+    </div>
 
     <div class="row">
         <div class="col-md-12">
@@ -45,7 +79,7 @@
                         <h6 class="panel-title txt-dark">{{$question->question}}</h6>
                     </div>
                     <div class="pull-right">
-                        <a href="{{url('master/question')}}" class="btn btn-sm btn-warning">Close</a>
+                        <a href="{{url('master/question')}}" class="btn btn-sm btn-warning">Back</a>
                     </div>
                     <div class="clearfix"></div>
                 </div>

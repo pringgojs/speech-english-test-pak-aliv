@@ -16,6 +16,7 @@ class Kernel extends ConsoleKernel
         Commands\ResetDatabase::class,
         Commands\FixVendor::class,
         Commands\TestEmail::class,
+        Commands\Test::class,
     ];
 
     /**

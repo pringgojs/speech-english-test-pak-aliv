@@ -87,20 +87,35 @@ class AdminHelper
 
         /** drop answer exist */
         if ($request->id) {
-            QuestionAnswer::where('question_id', $model->id)->delete();
+            // $id = QuestionAnswer::where('question_id', $model->id)->select('id')->get()->toArray();
+            // $question_answer_id_old = array_flatten($id);
+            // QuestionAnswer::where('question_id', $model->id)->delete();
         }
 
-        $answers = $request->answers;
-        $scores = $request->scores;
-        for ($i=0; $i < count($answers); $i++) { 
-            $answer = new QuestionAnswer;
-            $answer->question_id =  $model->id;
-            $answer->answer = $answers[$i];
-            $answer->score = $scores[$i];
-            self::save($answer);
+        if (!$request->id) {
+            // $answers = $request->answers;
+            // $scores = $request->scores;
+            // for ($i=0; $i < count($answers); $i++) { 
+            //     $answer = new QuestionAnswer;
+            //     $answer->question_id =  $model->id;
+            //     $answer->answer = $answers[$i];
+            //     $answer->score = $scores[$i];
+            //     self::save($answer);
+            // }
         }
 
         return $model;
+    }
+
+    public static function createAnswerCategory($request)
+    {
+        $answer = new QuestionAnswer;
+        $answer->question_id =  $request->question_id;
+        $answer->answer = $request->name;
+        $answer->score = $request->score;
+        self::save($answer);
+
+        return $answer;
     }
 
     /** Student */
