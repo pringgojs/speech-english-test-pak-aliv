@@ -25,13 +25,13 @@ class Post extends Model
         return $content;
     }
 
-    public static function generateLink($post)
+    public function generateLink()
     {
-        $link = str_replace(' ', '-',  strtolower($post->title));
+        $link = str_replace(' ', '-',  strtolower($this->title));
         $link = str_replace('/', '-', $link);
         $link = str_replace('.', '', $link);
         $link = str_replace('"', '', $link);
 
-        return url('front/news/'. $post->id . '/' . $link);
+        return url('front/news/'. $this->id . '/' . $link);
     }
 }

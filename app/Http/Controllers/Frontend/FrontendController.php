@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Frontend;
 
+use App\Models\Post;
 use App\Models\Topic;
 use App\Models\Student;
 use App\Helpers\FrontHelper;
@@ -64,6 +65,23 @@ class FrontendController extends Controller
         $view->student_answers = StudentAnswer::where($where)->get();
         $view->total_score = StudentAnswer::where($where)->sum('score');
         $view->topic = Topic::find($decrypt[1]);
+        return $view;
+    }
+
+    /**
+     * post
+     */
+    public function post()
+    {
+        $view = view('frontend.post');
+        $view->posts = Post::search()->orderBy('created_at', 'desc')->paginate(10);
+        return $view;
+    }
+
+    public function postDetail($id, $any)
+    {
+        $view = view('frontend.post-detail');
+        $view->post = Post::findOrFail($id);
         return $view;
     }
 }

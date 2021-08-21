@@ -14,6 +14,13 @@
 					<div class="clearfix"></div>
 				</a>
 			</li>
+			<li>
+				<a @if(\Request::segment(2)=='news' ) class="active" @endif href="{{url('front/news')}}" data-toggle="collapse"
+					data-target="#dashboard_dr">
+					<div class="pull-left"><i class="fa fa-file-text mr-20"></i><span class="right-nav-text">News</span></div>
+					<div class="clearfix"></div>
+				</a>
+			</li>
 			{{-- <li class="navigation-header mt-20">
 				<span>master</span>
 				<hr>
