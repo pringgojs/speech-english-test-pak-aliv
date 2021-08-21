@@ -4,6 +4,7 @@ namespace App\Helpers;
 
 use App\User;
 use Carbon\Carbon;
+use App\Models\Post;
 use App\Models\Group;
 use App\Models\Topic;
 use App\Models\Student;
@@ -24,6 +25,7 @@ class AdminHelper
             $model->save();
             return $model;
         } catch (\Exception $e) {
+            dd($e);
             throw new AppException("Failed to save data", 503);
         }
     }
@@ -193,5 +195,18 @@ class AdminHelper
         }
 
         return 'OK';
+    }
+
+    /** Post */
+    public static function createPost($request)
+    {
+        $id = $request->id;
+        $model = $id ? Post::findOrFail($id) : new Post;
+        $model->title = $request->input('title');
+        $model->content = $request->input('content');
+        if ($request->file('file')) {
+            $model->cover = FileHelper::upload($request->file('file'), 'uploads/thumbnail/');
+        }
+        return self::save($model);
     }
 }

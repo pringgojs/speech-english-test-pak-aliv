@@ -64,6 +64,9 @@
 				<li>
 					<a @if(\Request::segment(1) == 'report') class="active" @endif href="{{url('report')}}"><div class="pull-left"><i class="fa fa-file  mr-20"></i><span class="right-nav-text">Report </span></div><div class="clearfix"></div></a>
 				</li>
+				<li>
+					<a @if(\Request::segment(1) == 'post') class="active" @endif href="{{url('post')}}"><div class="pull-left"><i class="fa fa-file-text  mr-20"></i><span class="right-nav-text">Post </span></div><div class="clearfix"></div></a>
+				</li>
 				@if(access_is_allowed_to_view('read.user'))
 					<li>
 						<a @if(\Request::segment(1) == 'user') class="active" @endif href="{{url('user')}}"><div class="pull-left"><i class="fa fa-user  mr-20"></i><span class="right-nav-text">User </span></div><div class="clearfix"></div></a>

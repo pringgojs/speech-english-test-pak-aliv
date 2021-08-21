@@ -12,6 +12,11 @@ use Illuminate\Support\Facades\Crypt;
 | contains the "web" middleware group. Now create something great!
 |
 */
+
+/** CKeditor */
+Route::post('ckeditor/image-upload-drag', 'CKEditorController@uploadDrag');
+Route::post('ckeditor/image-upload', 'CKEditorController@upload')->name('ckeditor-upload');
+
 /** Camera js */
 Route::post('manual-upload', 'CameraController@manualUpload');
 Route::get('camera/render-js', 'CameraController@renderJS');
@@ -40,11 +45,14 @@ Route::group(['middleware' => 'auth'], function () {
 
 // Student
 Route::group(['namespace' => 'Frontend', 'prefix' => 'front', 'middleware' => ['auth', 'role:student']], function () {
+    Route::get('news/{id}/{any}', 'FrontendController@postDetail');
+    Route::get('news', 'FrontendController@post');
     Route::get('result/{token}', 'FrontendController@result');
     Route::post('store', 'FrontendController@store');
     Route::get('form/{token}', 'FrontendController@form');
     Route::get('/', 'FrontendController@index');
 });
+
 // Full Administrator
 Route::group(['namespace' => 'Backend', 'middleware' => ['auth', 'role:administrator']], function () {
     Route::get('/', 'BackendController@index');
@@ -64,6 +72,9 @@ Route::group(['namespace' => 'Backend', 'middleware' => ['auth', 'role:administr
         Route::resource('kategori', 'KategoriController');
         
     });
+    
+    Route::get('post/{id}/copy', 'PostController@copy');
+    Route::resource('post', 'PostController');
     Route::get('report/detail/{id}', 'ReportController@_detail');
     Route::get('report', 'ReportController@index');
     

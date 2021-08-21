@@ -16,7 +16,8 @@
         "maatwebsite/excel": "~2.1.0",
         "nikolaynesov/laravel-roles": "~2.2.0",
         "phpoffice/phpword": "^0.16.0",
-        "simplesoftwareio/simple-qrcode": "~2"
+        "simplesoftwareio/simple-qrcode": "~2",
+        "unisharp/laravel-ckeditor": "^4.7"
     },
     "require-dev": {
         "fzaninotto/faker": "~1.4",
