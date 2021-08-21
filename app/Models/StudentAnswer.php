@@ -66,4 +66,49 @@ class StudentAnswer extends Model
         })
         ->select([$this->table.'.*']);
     }
+
+    public function answerRender()
+    {
+        $question = Question::find($this->question_id);
+        $score = 0;
+        $answer = strtolower($this->answer);
+        $text = '';
+        foreach ($question->answers as $question_answer) {
+            foreach ($question_answer->variants as $variant) {
+                if (strpos($answer, strtolower($variant->answer))  !== false) {
+                    //$score += $question_answer->score;
+                    $answer = str_replace(strtolower($variant->answer), '<span style="border:1px solid green; text-align: center; padding:3px; margin-right:3px">'. strtolower($variant->answer).'</span> ', $answer);
+                    # 1 kategori hanya bisa diambil maksimal 1 skor yang betul. Agar tidak bug (user bisa menjawab dengan variant sama dan mendapat skor)
+                    break;
+                }
+            }
+        }
+
+        return $answer;
+    }
+
+    public function renderCorrectCategory()
+    {
+        $question = Question::find($this->question_id);
+        $score = 0;
+        $answer = strtolower($this->answer);
+        $id_variant = [];
+        echo '<div class="button-list mt-25">';
+        foreach ($question->answers as $question_answer) {
+
+            $true = false;
+            foreach ($question_answer->variants as $variant) {
+                if (strpos($answer, strtolower($variant->answer))  !== false) {
+                    $true = true;
+                    # 1 kategori hanya bisa diambil maksimal 1 skor yang betul. Agar tidak bug (user bisa menjawab dengan variant sama dan mendapat skor)
+                    break;
+                }
+            }
+
+            $bg = $true ? 'btn-success' : 'btn-warning';
+            echo '<button type="button" class="btn btn-xs '.$bg.' btn-outline" data-toggle="tooltip" data-placement="top" title="" data-original-title="'.$question_answer->answer.'">'.$question_answer->answer.'</button>';
+        }
+
+        echo '</div>';
+    }
 }

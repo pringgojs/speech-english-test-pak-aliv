@@ -18,4 +18,11 @@ class ReportController extends Controller
         $view->topics = Topic::all();
         return $view;
     }
+
+    public function _detail($id)
+    {
+        $view = view('backend.report._detail');
+        $view->report = StudentAnswer::findOrFail($id);
+        return $view;
+    }
 }

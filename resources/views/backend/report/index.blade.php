@@ -103,6 +103,7 @@
                                             <th>Question / Answer</th>
                                             <th>Score</th>
                                             <th>Created At</th>
+                                            <th>#</th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -114,11 +115,17 @@
                                             <td>{{$report->topic->name}}</td>
                                             <td>
                                                 <b>Q: </b>{{$report->question->question}} <br> 
-                                                <b>A: </b>{{$report->answer}} <br> 
+                                                <b>A: </b>{!! $report->answerRender() !!} <br> 
                                             </td>
                                                 
-                                            <td>{{$report->score}}</td>
+                                            <td>{{format_quantity($report->score)}}</td>
                                             <td>{{date_format_view($report->created_at)}}</td>
+                                            <td>
+                                                <a onclick="showDetail('{{url("report/detail/".$report->id)}}')" data-toggle="modal" data-target=".detail-modal"
+                                                    data-toggle="tooltip" data-toggle="tooltip" data-original-title="Detail">
+                                                    <button class="btn btn-dropbox btn-icon-anim btn-square btn-sm"><i class="fa fa-ellipsis-v"></i></button>
+                                                </a>
+                                            </td>
                                         </tr>
                                         @endforeach
 
