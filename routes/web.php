@@ -64,6 +64,7 @@ Route::group(['namespace' => 'Backend', 'middleware' => ['auth', 'role:administr
         Route::resource('kategori', 'KategoriController');
         
     });
+    Route::get('report', 'ReportController@index');
     
     Route::delete('group/delete-topic/{group_topic_id}', 'GroupController@deleteTopicGroup');
     Route::delete('group/delete-student/{group_student_id}', 'GroupController@deleteStudentGroup');
