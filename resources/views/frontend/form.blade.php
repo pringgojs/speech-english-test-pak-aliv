@@ -24,6 +24,9 @@
                 <div class="panel-body text-center" style="background: #f1f1f1">
                     <div class="sm-data-box-4 with-icon">
                         <h6 class="panel-title txt-dark mb-15">{{$question->question}}</h6>
+                        @if($question->image)
+                        <img src="{{asset($question->image)}}" width="auto" height="150" alt="">
+                        @endif
                         <ul class="list-icons hidden" id="msg-done">
                             <li class="mb-10"><i class="fa fa-check text-danger mr-5"></i>We have recorded your answer</li>
                         </ul>

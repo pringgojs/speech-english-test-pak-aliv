@@ -30,7 +30,7 @@
                                 @php
                                 $token = encrypt($topic->group_id.'.'.$topic->topic_id .'.'. $topic->student_id);    
                                 @endphp
-                                <a href="{{url('front/form/'.$token)}}"> <img src="{{asset('microphone.png')}}" class="img-responsive" alt="Product Image"> </a>
+                                <a href="{{url('front/form/'.$token)}}"> <img src="{{$topic->topic->image ? asset($topic->topic->image) : asset('microphone.png')}}" class="img-responsive" alt="Product Image"> </a>
                             </div>
                             <div class="info">
                                 <h6>{{$topic->topic->name}}</h6>
