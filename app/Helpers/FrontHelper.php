@@ -69,9 +69,14 @@ class FrontHelper
     {
         $question = Question::find($question_id);
         $score = 0;
+        
         foreach ($question->answers as $question_answer) {
-            if (strpos(strtolower($answer), strtolower($question_answer->answer))  !== false) {
-                $score += $question_answer->score;
+            foreach ($question_answer->variants as $variant) {
+                if (strpos(strtolower($answer), strtolower($variant->answer))  !== false) {
+                    $score += $question_answer->score;
+                    # 1 kategori hanya bisa diambil maksimal 1 skor yang betul. Agar tidak bug (user bisa menjawab dengan variant sama dan mendapat skor)
+                    break;
+                }
             }
         }
 
