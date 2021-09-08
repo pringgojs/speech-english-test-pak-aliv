@@ -113,7 +113,7 @@ class FrontHelper
         return $score;
     }
 
-    public static function getTotalScore($group_id, $topic_id, $student_id)
+    public static function getTotalScore($group_id, $topic_id, $student_id, $trial)
     {
         $where = [
             'group_id' => $group_id,
@@ -121,7 +121,7 @@ class FrontHelper
             'student_id' => $student_id
         ];
 
-        return StudentAnswer::where($where)->sum('score');
+        return StudentAnswer::where($where)->whereTrial($trial)->sum('score');
     }
 
     /** get trial */

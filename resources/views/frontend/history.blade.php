@@ -47,7 +47,7 @@
                                         </thead>
                                         <tbody>
                                             @foreach ($histories as $i => $item)
-                                            <?php $score = \App\Helpers\FrontHelper::getTotalScore($item->group_id, $item->topic_id, $item->student_id);?>
+                                            <?php $score = \App\Helpers\FrontHelper::getTotalScore($item->group_id, $item->topic_id, $item->student_id, $item->trial);?>
                                             @php
                                             $token = encrypt($item->group_id.'.'.$item->topic_id .'.'. $item->student_id);    
                                             @endphp
