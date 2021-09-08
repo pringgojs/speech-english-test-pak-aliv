@@ -93,4 +93,16 @@ class FrontHelper
 
         return StudentAnswer::where($where)->sum('score');
     }
+
+    /** get trial */
+    public static function getTrial($group_id, $topic_id, $student_id)
+    {
+        $where = [
+            'group_id' => $group_id,
+            'topic_id' => $topic_id,
+            'student_id' => $student_id
+        ];
+
+        return StudentAnswer::where($where)->groupBy('trial')->get()->count();
+    }
 }

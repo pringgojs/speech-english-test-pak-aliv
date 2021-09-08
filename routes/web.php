@@ -47,6 +47,7 @@ Route::group(['middleware' => 'auth'], function () {
 Route::group(['namespace' => 'Frontend', 'prefix' => 'front', 'middleware' => ['auth', 'role:student']], function () {
     Route::get('news/{id}/{any}', 'FrontendController@postDetail');
     Route::get('news', 'FrontendController@post');
+    Route::get('history/{token}', 'FrontendController@history');
     Route::get('result/{token}', 'FrontendController@result');
     Route::post('store', 'FrontendController@store');
     Route::get('form/{token}', 'FrontendController@form');

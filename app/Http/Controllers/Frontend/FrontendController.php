@@ -33,6 +33,9 @@ class FrontendController extends Controller
         $is_valid = FrontHelper::nextQuestion($decrypt);
         if (!$is_valid) {
             /** TODO: redirect to result */
+            if (\Input::get('from') == 'dashboard') {
+                return redirect('front/history/'.$token);
+            }
             return redirect('front/result/'.$token);
         }
 
@@ -65,6 +68,23 @@ class FrontendController extends Controller
         $view->student_answers = StudentAnswer::where($where)->get();
         $view->total_score = StudentAnswer::where($where)->sum('score');
         $view->topic = Topic::find($decrypt[1]);
+        return $view;
+    }
+
+    public function history($token)
+    {
+        $decrypt = decrypt($token);
+        $decrypt = explode('.', $decrypt);
+        $where = [
+            'group_id' => $decrypt[0],
+            'topic_id' => $decrypt[1],
+            'student_id' => $decrypt[2]
+        ];
+
+        $view = view('frontend.history');
+        $view->topic = Topic::find($decrypt[1]);
+        $view->data = $where;
+        $view->histories = StudentAnswer::where($where)->orderBy('created_at', 'desc')->groupBy('trial')->get();
         return $view;
     }
 

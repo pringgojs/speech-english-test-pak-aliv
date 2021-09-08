@@ -14,7 +14,7 @@ class AddColumnTrialStudentAnswerTable extends Migration
     public function up()
     {
         Schema::table('student_answers', function ($table) {
-            $table->integer('trial')->default(0); // 0: unlimited trial,
+            $table->integer('trial')->default(1);
         });
     }
 

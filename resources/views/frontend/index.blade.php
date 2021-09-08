@@ -30,19 +30,24 @@
                                 @php
                                 $token = encrypt($topic->group_id.'.'.$topic->topic_id .'.'. $topic->student_id);    
                                 @endphp
-                                <a href="{{url('front/form/'.$token)}}"> <img src="{{$topic->topic->image ? asset($topic->topic->image) : asset('microphone.png')}}" class="img-responsive" alt="Product Image"> </a>
+                                <a href="{{url('front/form/'.$token.'?from=dashboard')}}"> <img src="{{$topic->topic->image ? asset($topic->topic->image) : asset('microphone.png')}}" class="img-responsive" alt="Product Image"> </a>
                             </div>
                             <div class="info">
                                 <h6>{{$topic->topic->name}}</h6>
                                 {{-- <div class="product-rating inline-block">
                                     <a href="javascript:void(0);" class="font-12 txt-orange zmdi zmdi-star mr-0"></a><a href="javascript:void(0);" class="font-12 txt-orange zmdi zmdi-star mr-0"></a><a href="javascript:void(0);" class="font-12 txt-orange zmdi zmdi-star mr-0"></a><a href="javascript:void(0);" class="font-12 txt-orange zmdi zmdi-star mr-0"></a><a href="javascript:void(0);" class="font-12 txt-orange zmdi zmdi-star-outline mr-0"></a>
                                 </div> --}}
+                                <?php $trial = \App\Helpers\FrontHelper::getTrial($topic->group_id, $topic->topic_id, $topic->student_id);?>
                                 <?php $score = \App\Helpers\FrontHelper::getTotalScore($topic->group_id, $topic->topic_id, $topic->student_id);?>
-                                @if (\App\Helpers\FrontHelper::isDone($token))
-                                <span class="head-font block txt-orange-light-1 font-16"><i class="fa fa-check-square-o"></i> {{format_quantity($score)}}</span>
-                                @else
-                                <span class="head-font block txt-orange-light-1 font-16">not done</span>
-                                @endif
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <span class="head-font block txt-orange-light-1 font-16"><i class="fa fa-refresh"></i> {{$trial}}/{{$topic->topic->max_trial ?? '~'}}</span>
+                                    </div>
+                                    <div class="col-md-6">
+                                        {{-- <span class="head-font block txt-primary font-14 mr-5 text-right"> Retry</span> --}}
+                                    </div>
+
+                                </div>
                             </div>
                         </article>
                     </div>
