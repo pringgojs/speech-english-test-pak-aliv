@@ -71,15 +71,16 @@
             </div>
         </div>
     </div>
-    @if ($trial < $topic->max_trial)
+    @if ($trial < $topic->max_trial || $topic->max_trial == 0)
     <div class="row">
         <div class="col-md-12">
             <div class="row">
                 {{-- daftar kuis --}}
                 <div class="col-sm-12 col-xs-12">
                     @php 
+                    $unlimited = $topic->max_trial == 0 ? 1: 0;
                     $token = encrypt($data['group_id'].'.'.$data['topic_id'] .'.'. $data['student_id']);    
-                    $url = url('front/form/'.$token); @endphp
+                    $url = url('front/form/'.$token . '?unlimited='.$unlimited); @endphp
                     <button class="btn btn-success btn-lg btn-block" onclick="swalConfirm('{{$url}}', 'Are you sure you want to continue?', 'your chances will decrease')">Try Again</button>
                 </div>
             </div>

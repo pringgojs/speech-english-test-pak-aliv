@@ -40,7 +40,7 @@
                                 <?php $trial = \App\Helpers\FrontHelper::getTrial($topic->group_id, $topic->topic_id, $topic->student_id);?>
                                 <div class="row">
                                     <div class="col-md-6">
-                                        <span class="head-font block txt-orange-light-1 font-16"><i class="fa fa-refresh"></i> {{$trial}}/{{$topic->topic->max_trial ?? '~'}}</span>
+                                        <span class="head-font block txt-orange-light-1 font-16"><i class="fa fa-refresh"></i> {{$trial}}/{{$topic->topic->max_trial ? : '~'}}</span>
                                     </div>
                                     <div class="col-md-6">
                                         {{-- <span class="head-font block txt-primary font-14 mr-5 text-right"> Retry</span> --}}

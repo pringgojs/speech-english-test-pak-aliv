@@ -43,6 +43,7 @@
                                             <th>No</th>
                                             <th>Cover</th>
                                             <th>Name</th>
+                                            <th>Trial</th>
                                             <th>Created At</th>
                                             <th>#</th>
                                         </tr>
@@ -58,6 +59,7 @@
                                                 @endif
                                             </td>
                                             <td>{{$topic->name}}</td>
+                                            <td>{{$topic->max_trial ? : 'unlimited' }}</td>
                                             <td>{{date_format_view($topic->created_at)}}</td>
                                             <td>
                                                 @if(access_is_allowed_to_view('update.master.topic'))

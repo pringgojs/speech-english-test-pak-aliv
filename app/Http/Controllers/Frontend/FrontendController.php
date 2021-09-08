@@ -33,6 +33,7 @@ class FrontendController extends Controller
         /** format token: ($group_id.$topic_id.$student_id) */
         $decrypt = decrypt($token);
         $is_valid = FrontHelper::nextQuestion($decrypt, $from);
+
         if (!$is_valid) {
             /** TODO: redirect to result */
             if (\Input::get('from') == 'dashboard') {

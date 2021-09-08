@@ -41,13 +41,22 @@ class FrontHelper
         $student_answer = StudentAnswer::where($where)->where('trial', $trial_student)->select('question_id')->get()->toArray();
         $question_id = array_flatten($student_answer);
         $question = Question::where('topic_id', $decrypt[1])->whereNotIn('id', $question_id)->orderBy('id', 'asc')->first();
-        if ($question) return $question;
         
+        if ($question) return $question;
         /** create new trial */
         if (($trial_student < $max_trial) && ($from != 'formujian')) {
             $question_id = [];
             return Question::where('topic_id', $decrypt[1])->whereNotIn('id', $question_id)->orderBy('id', 'asc')->first();
         }
+
+        /** unlimited first chat */
+        if ($max_trial == 0 && \Input::get('unlimited') == 1) {
+            $question_id = [];
+            $question = Question::where('topic_id', $decrypt[1])->whereNotIn('id', $question_id)->orderBy('id', 'asc')->first();
+            return $question;
+        }
+
+        return false;
     }
 
     public static function isDone($token)
@@ -75,13 +84,20 @@ class FrontHelper
 
         $student_answer = StudentAnswer::where($where)->where('trial', $trial_student)->select('question_id')->get()->toArray();
         $question_id = array_flatten($student_answer);
+
         $question = Question::where('topic_id', $decrypt[1])->whereNotIn('id', $question_id)->orderBy('id', 'asc')->first();
-        $trial = StudentAnswer::where($where)->orderBy('trial', 'desc')->first()->trial;
-        if (!$question) {
-            $trial += 1;
+        $trial_check = StudentAnswer::where($where)->orderBy('trial', 'desc')->first();
+        
+        $trial = 1;
+        if (!$question && $trial_check) {
+            $trial = $trial_check->trial + 1;
+
         }
 
-        
+        if ($question && $trial_check) {
+            $trial = $trial_check->trial;
+        }
+
         $answer = new StudentAnswer;
         $answer->group_id = $decrypt[0];
         $answer->topic_id = $decrypt[1];
