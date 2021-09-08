@@ -97,12 +97,5 @@
         } 
     });
 
-    function trial(val) {
-        if (val) {
-            $('.col-max-trial').removeClass('hidden');
-        } else {
-            $('.col-max-trial').addClass('hidden');
-        }
-    }
     </script>
 @endsection
