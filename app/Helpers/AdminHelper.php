@@ -68,6 +68,7 @@ class AdminHelper
         $file = $request->file('file');
         $model = $request->id ? Topic::findOrFail($request->id) : new Topic;
         $model->name = $request->input('name');
+        $model->max_trial = $request->trial ? $request->input('max_trial') : 0;
         if ($file) {
             $model->image = FileHelper::upload($file, 'uploads/topic/');
         }

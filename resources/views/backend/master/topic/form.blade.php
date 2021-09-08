@@ -35,6 +35,32 @@
                                     <label class="control-label mb-10 text-left">Name*</label>
                                     <input type="text" name="name" value="{{$topic->name}}" class="form-control" placeholder="" required>
                                 </div>
+
+                                <div class="form-group">
+                                    <label class="control-label mb-10 text-left">Trial*</label>
+                                    <div class="row">
+                                        <div class="col-md-3">
+                                            <div class="radio radio-info">
+                                                <input type="radio" name="trial" id="unlimited" value="0" @if($topic->max_trial == 0) checked @endif>
+                                                <label for="unlimited">
+                                                    Unlimited
+                                                </label>
+                                            </div>
+
+                                            <div class="radio radio-info">
+                                                <input type="radio" name="trial" id="trial" value="1" @if($topic->max_trial > 0) checked @endif>
+                                                <label for="trial">
+                                                    Trial
+                                                </label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row col-max-trial @if($topic->max_trial == 0) hidden @endif">
+                                        <div class="col-md-3">
+                                            <input type="number" min="1" name="max_trial" id="max_trial" value="{{$topic->max_trial}}" class="form-control" placeholder="max trial" required>
+                                        </div>
+                                    </div>
+                                </div>
                                 
                                 <div class="form-group ">
                                     <label class="control-label mb-10">Cover (optional)</label>
@@ -59,5 +85,24 @@
 @section('scripts')
     <script>
     initFormatNumber();
+
+    $('input:radio').click(function() {
+        if ($(this).val() === '0') {
+            $('.col-max-trial').addClass('hidden');
+            $('#max_trial').prop('disabled', true);
+
+        } else if ($(this).val() === '1') {
+            $('.col-max-trial').removeClass('hidden');
+            $('#max_trial').prop('disabled', false);
+        } 
+    });
+
+    function trial(val) {
+        if (val) {
+            $('.col-max-trial').removeClass('hidden');
+        } else {
+            $('.col-max-trial').addClass('hidden');
+        }
+    }
     </script>
 @endsection
