@@ -146,7 +146,7 @@ function submitForm() {
         },
         success: function (res) {
             console.log(res);
-            window.location = '{{url("front/form/".$token)}}';
+            window.location = '{{url("front/form/".$token)}}/?from=formujian';
         }, error: function (res) {
             console.log(res);
             notification('Error', 'Something went wrong');

@@ -28,15 +28,26 @@ class FrontendController extends Controller
 
     public function form($token)
     {
+        # from: dashboard; formujian;
+        $from = \Input::get('from');
         /** format token: ($group_id.$topic_id.$student_id) */
         $decrypt = decrypt($token);
-        $is_valid = FrontHelper::nextQuestion($decrypt);
+        $is_valid = FrontHelper::nextQuestion($decrypt, $from);
         if (!$is_valid) {
             /** TODO: redirect to result */
             if (\Input::get('from') == 'dashboard') {
                 return redirect('front/history/'.$token);
             }
-            return redirect('front/result/'.$token);
+
+            $decrypt = explode('.', $decrypt);
+            $where = [
+                'group_id' => $decrypt[0],
+                'topic_id' => $decrypt[1],
+                'student_id' => $decrypt[2]
+            ];
+            /** jika soal sudah selesai dijawab maka, return trial ke berapa*/
+            $trial = StudentAnswer::where($where)->max('trial');
+            return redirect('front/result/'.$token.'?trial='.$trial);
         }
 
 
@@ -64,9 +75,10 @@ class FrontendController extends Controller
             'student_id' => $decrypt[2]
         ];
 
+        $trial = \Input::get('trial');
         $view = view('frontend.result');
-        $view->student_answers = StudentAnswer::where($where)->get();
-        $view->total_score = StudentAnswer::where($where)->sum('score');
+        $view->student_answers = StudentAnswer::where($where)->whereTrial($trial)->get();
+        $view->total_score = StudentAnswer::where($where)->whereTrial($trial)->sum('score');
         $view->topic = Topic::find($decrypt[1]);
         return $view;
     }

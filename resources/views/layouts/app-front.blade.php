@@ -163,6 +163,20 @@
 				stack: 6
 			});
 		}
+
+		function swalConfirm(url,title, text) {
+			swal({
+				title: title,
+				text: text,
+				type: "warning",
+				showCancelButton: true,
+				confirmButtonColor: "#f2b701",
+				confirmButtonText: "Yes, i agree",
+				closeOnConfirm: false
+			}, function () {
+				location.href=url;
+			});
+		}
     </script>
 	
 	@yield('scripts')

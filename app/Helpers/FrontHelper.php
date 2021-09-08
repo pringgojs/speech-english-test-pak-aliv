@@ -2,6 +2,7 @@
 
 namespace App\Helpers;
 
+use App\Models\Topic;
 use App\Models\Question;
 use App\Models\StudentAnswer;
 
@@ -23,7 +24,7 @@ class FrontHelper
         return false;
     }
 
-    public static function nextQuestion($decrypt)
+    public static function nextQuestion($decrypt, $from="")
     {
         $decrypt = explode('.', $decrypt);
         $where = [
@@ -32,11 +33,21 @@ class FrontHelper
             'student_id' => $decrypt[2]
         ];
 
-        $student_answer = StudentAnswer::where($where)->select('question_id')->get()->toArray();
-        $question_id = array_flatten($student_answer);
-        $question = Question::where('topic_id', $decrypt[1])->whereNotIn('id', $question_id)->orderBy('serial_number', 'asc')->first();
+        
+        $max_trial = Topic::findOrFail($decrypt[1])->max_trial;
+        $trial_student = StudentAnswer::where($where)->groupBy('trial')->get()->count();
 
-        return $question;
+        /** Asusmsi sudah percobaan 1x */
+        $student_answer = StudentAnswer::where($where)->where('trial', $trial_student)->select('question_id')->get()->toArray();
+        $question_id = array_flatten($student_answer);
+        $question = Question::where('topic_id', $decrypt[1])->whereNotIn('id', $question_id)->orderBy('id', 'asc')->first();
+        if ($question) return $question;
+        
+        /** create new trial */
+        if (($trial_student < $max_trial) && ($from != 'formujian')) {
+            $question_id = [];
+            return Question::where('topic_id', $decrypt[1])->whereNotIn('id', $question_id)->orderBy('id', 'asc')->first();
+        }
     }
 
     public static function isDone($token)
@@ -52,7 +63,25 @@ class FrontHelper
         $decrypt = decrypt($request['token']);
         $decrypt = explode('.', $decrypt);
         /** format token: ($group_id.$topic_id.$student_id) */
+        $where = [
+            'group_id' => $decrypt[0],
+            'topic_id' => $decrypt[1],
+            'student_id' => $decrypt[2]
+        ];
 
+        /** cek trial ke berapa */
+        $max_trial = Topic::findOrFail($decrypt[1])->max_trial;
+        $trial_student = StudentAnswer::where($where)->groupBy('trial')->get()->count();
+
+        $student_answer = StudentAnswer::where($where)->where('trial', $trial_student)->select('question_id')->get()->toArray();
+        $question_id = array_flatten($student_answer);
+        $question = Question::where('topic_id', $decrypt[1])->whereNotIn('id', $question_id)->orderBy('id', 'asc')->first();
+        $trial = StudentAnswer::where($where)->orderBy('trial', 'desc')->first()->trial;
+        if (!$question) {
+            $trial += 1;
+        }
+
+        
         $answer = new StudentAnswer;
         $answer->group_id = $decrypt[0];
         $answer->topic_id = $decrypt[1];
@@ -60,6 +89,7 @@ class FrontHelper
         $answer->answer = $request['answer'];
         $answer->question_id = $request['question_id'];
         $answer->score = self::calculateScore($request['question_id'], $request['answer']);
+        $answer->trial = $trial;
         $answer->save();
 
         return $answer;

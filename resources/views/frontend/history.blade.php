@@ -56,7 +56,7 @@
                                                     <td>{{date_format_view($item->created_at, true)}}</td>
                                                     <td>{{format_quantity($score)}}</td>
                                                     <td>
-                                                        <a href="{{url('front/result/'.$token)}}" class="btn btn-primary btn-sm">View details</a>
+                                                        <a href="{{url('front/result/'.$token.'?trial='.$item->trial)}}" class="btn btn-primary btn-sm">View details</a>
                                                     </td>
                                                 </tr>    
                                             @endforeach
@@ -71,17 +71,21 @@
             </div>
         </div>
     </div>
-
+    @if ($trial < $topic->max_trial)
     <div class="row">
         <div class="col-md-12">
             <div class="row">
                 {{-- daftar kuis --}}
                 <div class="col-sm-12 col-xs-12">
-                    <button class="btn btn-success btn-lg btn-block">Try Again</button>
+                    @php 
+                    $token = encrypt($data['group_id'].'.'.$data['topic_id'] .'.'. $data['student_id']);    
+                    $url = url('front/form/'.$token); @endphp
+                    <button class="btn btn-success btn-lg btn-block" onclick="swalConfirm('{{$url}}', 'Are you sure you want to continue?', 'your chances will decrease')">Try Again</button>
                 </div>
             </div>
         </div>
     </div>
+    @endif
 @stop
 
 @section('scripts')
