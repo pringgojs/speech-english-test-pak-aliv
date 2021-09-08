@@ -46,10 +46,10 @@
                                     <input type="text" name="question" value="{{$question->question}}" class="form-control" placeholder="" required>
                                 </div>
                                 
-                                <div class="form-group">
+                                {{-- <div class="form-group">
                                     <label class="control-label mb-10 text-left">Serial number*</label>
                                     <input type="number" name="serial_number" value="{{$question->serial_number}}" class="form-control" placeholder="" required>
-                                </div>
+                                </div> --}}
 
 
                                 <div class="form-group ">
@@ -62,13 +62,13 @@
                                 @if (!$question->id)
 
                                 {{-- Option answer --}}
-                                <div class="seprator-block"></div>
+                                {{-- <div class="seprator-block"></div>
                                 <h6 class="txt-dark capitalize-font"><i class="fa fa-check mr-10"></i>Answer Category</h6>
-                                <hr class="light-grey-hr">
+                                <hr class="light-grey-hr"> --}}
 
                                     
                                 {{-- Default answer --}}
-                                <div class="row">
+                                {{-- <div class="row">
                                     <div class="col-lg-12">
                                         <div class="table-responsive">
                                             <table id="document" class="table table-responsive table-border" cellspacing="0" width="100%">
@@ -106,7 +106,7 @@
                                             </table>
                                         </div>
                                     </div>
-                                </div>
+                                </div> --}}
 
                                 @endif
                                 

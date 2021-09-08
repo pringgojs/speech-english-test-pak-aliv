@@ -81,7 +81,7 @@ class AdminHelper
         $model = $request->id ? Question::findOrFail($request->id) : new Question;
         $model->question = $request->question;
         $model->topic_id = $request->topic_id;
-        $model->serial_number = $request->serial_number;
+        // $model->serial_number = $request->serial_number;
         if ($file) {
             $model->image = FileHelper::upload($file, 'uploads/question/');
         }

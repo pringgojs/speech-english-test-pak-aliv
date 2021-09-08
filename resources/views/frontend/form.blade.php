@@ -28,7 +28,7 @@
                         <img src="{{asset($question->image)}}" width="auto" height="150" alt="">
                         @endif
                         <ul class="list-icons hidden" id="msg-done">
-                            <li class="mb-10"><i class="fa fa-check text-danger mr-5"></i>We have recorded your answer</li>
+                            <li class="mb-10"><i class="fa fa-check text-danger mr-5"></i>You have done recording. Click the submit button</li>
                         </ul>
 
                         <div class="relative mb-15">
