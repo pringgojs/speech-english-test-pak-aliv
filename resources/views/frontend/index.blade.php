@@ -30,7 +30,7 @@
                                 @php
                                 $token = encrypt($topic->group_id.'.'.$topic->topic_id .'.'. $topic->student_id);    
                                 @endphp
-                                <a href="{{url('front/form/'.$token.'?from=dashboard')}}"> <img src="{{$topic->topic->image ? asset($topic->topic->image) : asset('microphone.png')}}" class="img-responsive" alt="Product Image"> </a>
+                                <a href="{{url('front/history/'.$token.'?from=dashboard')}}"> <img src="{{$topic->topic->image ? asset($topic->topic->image) : asset('microphone.png')}}" class="img-responsive" alt="Product Image"> </a>
                             </div>
                             <div class="info">
                                 <h6>{{$topic->topic->name}}</h6>
@@ -38,7 +38,6 @@
                                     <a href="javascript:void(0);" class="font-12 txt-orange zmdi zmdi-star mr-0"></a><a href="javascript:void(0);" class="font-12 txt-orange zmdi zmdi-star mr-0"></a><a href="javascript:void(0);" class="font-12 txt-orange zmdi zmdi-star mr-0"></a><a href="javascript:void(0);" class="font-12 txt-orange zmdi zmdi-star mr-0"></a><a href="javascript:void(0);" class="font-12 txt-orange zmdi zmdi-star-outline mr-0"></a>
                                 </div> --}}
                                 <?php $trial = \App\Helpers\FrontHelper::getTrial($topic->group_id, $topic->topic_id, $topic->student_id);?>
-                                <?php $score = \App\Helpers\FrontHelper::getTotalScore($topic->group_id, $topic->topic_id, $topic->student_id);?>
                                 <div class="row">
                                     <div class="col-md-6">
                                         <span class="head-font block txt-orange-light-1 font-16"><i class="fa fa-refresh"></i> {{$trial}}/{{$topic->topic->max_trial ?? '~'}}</span>
