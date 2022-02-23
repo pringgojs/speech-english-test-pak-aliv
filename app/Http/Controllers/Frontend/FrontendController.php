@@ -37,7 +37,7 @@ class FrontendController extends Controller
         if (!$is_valid) {
             /** TODO: redirect to result */
             if (\Input::get('from') == 'dashboard') {
-                return redirect('front/history/'.$token);
+                return redirect(url('front/history/'.$token));
             }
 
             $decrypt = explode('.', $decrypt);
@@ -48,7 +48,7 @@ class FrontendController extends Controller
             ];
             /** jika soal sudah selesai dijawab maka, return trial ke berapa*/
             $trial = StudentAnswer::where($where)->max('trial');
-            return redirect('front/result/'.$token.'?trial='.$trial);
+            return redirect(url('front/result/'.$token.'?trial='.$trial));
         }
 
 
