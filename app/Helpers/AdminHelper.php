@@ -126,11 +126,12 @@ class AdminHelper
     {
         DB::beginTransaction();
         $password = str_random(10);
+        $username = 'user'.str_random(10);
         if (!$request->id) {
             $user = new User;
-            $user->name;
+            $user->name = $request->name;
             $user->password = bcrypt($password);
-            $user->username = 'student';
+            $user->username = $username;
             $user->email = str_random(11).'@gmail.com';
             $user->save();
 
