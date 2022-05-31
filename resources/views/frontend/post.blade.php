@@ -32,7 +32,7 @@
                         <div class="row">
                             @if ($item->cover)
                             <div class="col-sm-3">
-                                <img src="{{asset($item->cover)}}" style="" width="300px" height="auto" alt="">
+                                <img src="{{asset($item->cover)}}" class="img-fluid"  alt="">
                             </div>
                             <div class="col-sm-9">
                                 <p class="muted">{{$item->desc(500)}}</p>
@@ -40,9 +40,10 @@
                             </div>
                                 
                             @else
-                            <p class="muted">{{$item->desc(500)}}</p>
-                            <a href="{{$item->generateLink()}}" class="btn btn-info btn-outline btn-0">Continue reading</a>
-
+                            <div class="col-sm-12">
+                                <p class="muted">{{$item->desc(500)}}</p>
+                                <a href="{{$item->generateLink()}}" class="btn btn-info btn-outline btn-0">Continue reading</a>
+                            </div>
                             @endif
                         </div>
                         
