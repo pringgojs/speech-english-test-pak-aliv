@@ -35,11 +35,12 @@ class Student extends Model
     public static function store($data = [])
     {
         $password = str_random(10);
+        $username = 'user'.str_random(10);
         
         $user = new User;
         $user->name;
         $user->password = bcrypt($password);
-        $user->username = 'student';
+        $user->username = $username;
         $user->email = $user->password.'@gmail.com';
         $user->save();
 
