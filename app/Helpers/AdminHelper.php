@@ -131,6 +131,7 @@ class AdminHelper
             $user->name;
             $user->password = bcrypt($password);
             $user->username = 'student';
+            $user->email = str_random(11).'@gmail.com';
             $user->save();
 
             $user->attachRole(2);
