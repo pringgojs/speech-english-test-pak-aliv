@@ -30,8 +30,12 @@
                                 @php
                                 $token = encrypt($topic->group_id.'.'.$topic->topic_id .'.'. $topic->student_id);    
                                 @endphp
+                                @if($topic->topic)
                                 <a href="{{url('front/history/'.$token.'?from=dashboard')}}"> <img src="{{$topic->topic->image ? asset($topic->topic->image) : asset('microphone.png')}}" class="img-responsive" alt="Product Image"> </a>
+                                @endif
                             </div>
+                            @if($topic->topic)
+
                             <div class="info">
                                 <h6>{{$topic->topic->name}}</h6>
                                 {{-- <div class="product-rating inline-block">
@@ -48,6 +52,7 @@
 
                                 </div>
                             </div>
+                            @endif
                         </article>
                     </div>
                 </div>	
